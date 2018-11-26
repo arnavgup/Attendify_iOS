@@ -6,10 +6,13 @@
 //
 
 import XCTest
+@testable import faceIT
 
 class AttendifyTests: XCTestCase {
-
+    let course = Course.init(courseId: 1)
+  
     override func setUp() {
+      
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
@@ -18,6 +21,7 @@ class AttendifyTests: XCTestCase {
     }
 
     func testExample() {
+      print(course.getStudents())
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
