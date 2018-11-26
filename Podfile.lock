@@ -1,5 +1,8 @@
 PODS:
   - AsyncSwift (2.0.1)
+  - Charts (3.0.5):
+    - Charts/Core (= 3.0.5)
+  - Charts/Core (3.0.5)
   - PKHUD (4.2.3)
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
@@ -8,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - AsyncSwift (~> 2.0)
+  - Charts (~> 3.0.2)
   - PKHUD (~> 4.0)
   - RxCocoa (~> 3.0)
   - RxSwift (~> 3.0)
@@ -16,6 +20,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AsyncSwift
+    - Charts
     - PKHUD
     - RxCocoa
     - RxSwift
@@ -23,11 +28,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AsyncSwift: 632138e42ead868b53c745fcde9bf733ce1527ad
+  Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   PKHUD: c7692163a09875cbf15827dc581df3c5cf7f1015
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: c9796086a47aca28c60f3fb74b0ebf5d3c6ce6a4
+PODFILE CHECKSUM: 0872916379c3294fe414ab212be90644456c79f3
 
 COCOAPODS: 1.5.3

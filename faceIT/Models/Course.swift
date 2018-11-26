@@ -106,17 +106,28 @@ class Course {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             var state = 0
             for attendance in allAttendances {
-                let adate = attendance.1["date"].string!.components(separatedBy: "T")[0]
-                print(adate)
-                print("\(Date())".components(separatedBy: " ")[0])
-                if (adate == "\(Date())".components(separatedBy: " ")[0]) {
-                    var lastInfo = enrolledStudents[aid]
-                    lastInfo!["attendance_id"] = attendance.1["id"]
-                    lastInfo!["status"] = attendance.1["attendance_type"]
-                    enrolledStudents[aid] = lastInfo
-                    state = 1
-                    break
+                // compare dates
+                // Convert from string to dates
+                let adateString = attendance.1["date"].string!.components(separatedBy: "T")[0]
+                let adate = dateFormatter.date(from: adateString)
+              if Calendar.current.compare(adate!, to: Date(), toGranularity: .day) == .orderedSame {
+                      var lastInfo = enrolledStudents[aid]
+                      lastInfo!["attendance_id"] = attendance.1["id"]
+                      lastInfo!["status"] = attendance.1["attendance_type"]
+                      enrolledStudents[aid] = lastInfo
+                      state = 1
+                      break
                 }
+//                print(adate)
+//                print("\(Date())".components(separatedBy: " ")[0])
+//                if (adate == "\(Date())".components(separatedBy: " ")[0]) {
+//                    var lastInfo = enrolledStudents[aid]
+//                    lastInfo!["attendance_id"] = attendance.1["id"]
+//                    lastInfo!["status"] = attendance.1["attendance_type"]
+//                    enrolledStudents[aid] = lastInfo
+//                    state = 1
+//                    break
+//                }
             }
             if (state == 0) {
                 var lastInfo = enrolledStudents[aid]

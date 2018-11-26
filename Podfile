@@ -11,4 +11,5 @@ target 'faceIT' do
   pod 'AsyncSwift', '~> 2.0'
   pod 'PKHUD',      '~> 4.0'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'Charts', '~> 3.0.2'
 end
