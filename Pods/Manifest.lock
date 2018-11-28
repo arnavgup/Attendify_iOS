@@ -1,5 +1,5 @@
 PODS:
-  - AsyncSwift (2.0.1)
+  - AsyncSwift (2.0.4)
   - Charts (3.0.5):
     - Charts/Core (= 3.0.5)
   - Charts/Core (3.0.5)
@@ -8,6 +8,7 @@ PODS:
     - RxSwift (~> 3.6)
   - RxSwift (3.6.1)
   - SwiftyJSON (4.2.0)
+  - Toast-Swift (4.0.0)
 
 DEPENDENCIES:
   - AsyncSwift (~> 2.0)
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - RxCocoa (~> 3.0)
   - RxSwift (~> 3.0)
   - SwiftyJSON (~> 4.0)
+  - Toast-Swift (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -25,15 +27,17 @@ SPEC REPOS:
     - RxCocoa
     - RxSwift
     - SwiftyJSON
+    - Toast-Swift
 
 SPEC CHECKSUMS:
-  AsyncSwift: 632138e42ead868b53c745fcde9bf733ce1527ad
+  AsyncSwift: 65775a7b32e740609b24969ece3de58723b9dc3e
   Charts: 45cdc985b764c838b35ee47eb1365d15735f6d1a
   PKHUD: c7692163a09875cbf15827dc581df3c5cf7f1015
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
-PODFILE CHECKSUM: 0872916379c3294fe414ab212be90644456c79f3
+PODFILE CHECKSUM: 3556a47db389744dc7a095bbcd6cf3209b5b9a2a
 
 COCOAPODS: 1.5.3

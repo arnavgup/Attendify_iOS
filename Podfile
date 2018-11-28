@@ -12,4 +12,5 @@ target 'faceIT' do
   pod 'PKHUD',      '~> 4.0'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Charts', '~> 3.0.2'
+  pod 'Toast-Swift', '~> 4.0.0'
 end
