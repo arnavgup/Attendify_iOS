@@ -39,7 +39,7 @@ extension UIViewController {
         })
     } }
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var startAttendanceButton: UIButton!
     @IBOutlet var statsButton: UIButton!
@@ -48,12 +48,17 @@ class HomeViewController: UIViewController {
     @IBOutlet var downloadStatus: UILabel!
     @IBOutlet var activityView: UIActivityIndicatorView!
     @IBOutlet var barButtonItem: UIBarButtonItem!
-
+    @IBOutlet var sceneView: ARSCNView!
     override func viewDidLoad() {
         super.viewDidLoad()
         activityView.startAnimating()
         
-        
+        //rounded corners
+        sceneView.delegate = self
+        sceneView.autoenablesDefaultLighting = true
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
+        sceneView.session.run(configuration)
         
         self.downloadStatus.text = "Fetching latest model"
         self.startAttendanceButton.layer.cornerRadius = 10

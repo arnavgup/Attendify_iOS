@@ -37,6 +37,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4tP-Zu-oto">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRQ-rb-NNt">
                                 <rect key="frame" x="23" y="183" width="328" height="283"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -132,6 +136,7 @@
                         <outlet property="courseButton" destination="csE-i0-3lT" id="UbB-2u-p38"/>
                         <outlet property="downloadStatus" destination="cdq-Hb-p6T" id="5yT-33-GX5"/>
                         <outlet property="manualAddButton" destination="TBA-mL-Hfv" id="dHD-zi-q95"/>
+                        <outlet property="sceneView" destination="4tP-Zu-oto" id="VjD-R8-lhJ"/>
                         <outlet property="startAttendanceButton" destination="FRQ-rb-NNt" id="iQh-56-3Lr"/>
                         <outlet property="statsButton" destination="BqU-UN-EOx" id="2E7-KA-hIu"/>
                     </connections>
