@@ -33,7 +33,6 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         for student in attendance{
             if( student.status == "Optional(Present)"){student.status = "Present"}
             if( student.status == "Optional(Absent)"){student.status = "Absent"}
@@ -312,11 +311,15 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
             }
             let face = Face.init(name: person_name, node: node, timestamp: frame.timestamp)
             self.faces.append(face)
+
             
             for s in self.attendance{
                 if(s.andrew == name)
                 {
                    s.status = "Present"
+                    let url = URL(string: (s.picture))!
+                    let data = try! Data(contentsOf: url)
+                    self.view.makeToast("\(s.name) was marked for attendance", duration: 0.5, position: .top, image: UIImage(data: data))
                     Async.main{
                         self.tableview.reloadData()
                         self.refreshLabels()
@@ -331,6 +334,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
 //            self.tableview.reloadData()
             
             // Filter for face that's already displayed
+//            self.view.hideAllToasts()
             if let displayFace = results.filter({ !$0.hidden }).first  {
                 
                 let distance = displayFace.node.position.distance(toVector: position)
