@@ -14,10 +14,11 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var filter: UISegmentedControl!
     @IBOutlet var date: UIDatePicker!
     
-   var attenance: [Student] = Course(courseId: 1).getStudents()
+   var attendance: [Student] = Course(courseId: 1).getStudents()
     override func viewDidLoad() {
         super.viewDidLoad()
-        for student in attenance{
+        attendance.sort(by: { $0.andrew > $1.andrew })
+        for student in attendance{
             if( student.status == "Optional(Present)"){student.status = "Present"}
             if( student.status == "Optional(Absent)"){student.status = "Absent"}
         }
@@ -30,18 +31,18 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(attenance[indexPath.row].status == "Present"){
-            attenance[indexPath.row].status = "Absent"
+        if(attendance[indexPath.row].status == "Present"){
+            attendance[indexPath.row].status = "Absent"
         }
         else{
-            attenance[indexPath.row].status = "Present"
+            attendance[indexPath.row].status = "Present"
         }
         self.tableview.reloadData()
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return attenance.count
+        return attendance.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,8 +50,7 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print(attenance[indexPath.row].andrew)
-        if (attenance[indexPath.row].status == "Present")
+        if (attendance[indexPath.row].status == "Present")
         {
             cell.backgroundColor = UIColor(red: 0.0078, green: 0.4078, blue: 0.1333, alpha: 1.0)
         }
@@ -64,18 +64,41 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
         
         let cell = tableview.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! StudentCollectionViewCell
         
-        cell.name.text = attenance[indexPath.row].name
+        cell.name.text = attendance[indexPath.row].name
         
         do {
-            let url = URL(string: (attenance[indexPath.row].picture))!
+            let url = URL(string: (attendance[indexPath.row].picture))!
             let data = try Data(contentsOf: url)
             cell.picture.image = UIImage(data: data)
         }
         catch{
             print(error)
         }
-        cell.andrewId.text = attenance[indexPath.row].andrew
+        cell.andrewId.text = attendance[indexPath.row].andrew
         return cell
+    }
+    
+    @IBAction func FilterChanged(_ sender: AnyObject) {
+        switch filter.selectedSegmentIndex
+        {
+        case 0:
+            attendance.sort(by: { $0.andrew > $1.andrew })
+        case 1:
+            attendance.sort(by: { $0.name > $1.name })
+        case 2:
+            attendance.sort(by: { $0.status > $1.status })
+        default:
+            break
+        }
+        self.tableview.reloadData()
+    }
+    
+    @IBAction func datePickerChanged(_ sender: Any) {
+        date.datePickerMode = UIDatePickerMode.date
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        var selectedDate = dateFormatter.string(from: date.date)
+        print(selectedDate)
     }
 
     /*
