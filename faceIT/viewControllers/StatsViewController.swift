@@ -19,8 +19,7 @@ class StatsViewController: UIViewController{
   @IBOutlet weak var barChart: BarChartView!
   weak var axisFormatDelegate: IAxisValueFormatter?
   var months: [String]! = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-//  let barChartFormat : BarChartFormatter = BarChartFormatter()
-//  let xaxis : XAxis = XAxis()
+
   
   var days: [String]!
 
@@ -53,25 +52,19 @@ class StatsViewController: UIViewController{
     chartView.rightAxis.enabled = false
     chartView.drawGridBackgroundEnabled = false
     chartView.xAxis.labelPosition = .bottom
-//    chartView.xAxis.label
     chartView.xAxis.axisLineColor = .clear
     chartView.fitBars = true
     chartView.drawValueAboveBarEnabled = false
     chartView.chartDescription?.text = ""
-//    chartView.barWidth = Double(0.30)
     barChart.noDataText = ""
   }
   
   func populateData(dataPoints: [String], values: [Double]) {
     var dataEntries: [BarChartDataEntry] = []
     for i in 0..<dataPoints.count {
-      let date = values
-//      let dataEntry = BarChartDataEntry(x: Double(dataPoints[i]) ?? 0.0, y: values[i])
       let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
       dataEntries.append(dataEntry)
-//      barChartFormat.stringForValue(Double(i), axis: xaxis)
     }
-//    xaxis.valueFormatter = barChartFormat
     let chartDataSet = BarChartDataSet(values: dataEntries, label: "Attendance count")
     let chartData = BarChartData(dataSet: chartDataSet)
     barChart.data = chartData

@@ -317,10 +317,11 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
                 if(s.andrew == name)
                 {
                    s.status = "Present"
-                    let url = URL(string: (s.picture))!
-                    let data = try! Data(contentsOf: url)
-                    self.view.makeToast("\(s.name) was marked for attendance", duration: 0.5, position: .top, image: UIImage(data: data))
+                    
                     Async.main{
+                        let url = URL(string: (s.picture))!
+                        let data = try! Data(contentsOf: url)
+                        self.view.makeToast("\(s.name) was marked for attendance", duration: 1.5, position: .center, image: UIImage(data: data))
                         self.tableview.reloadData()
                         self.refreshLabels()
                     }
