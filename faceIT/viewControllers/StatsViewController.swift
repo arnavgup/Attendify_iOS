@@ -12,29 +12,25 @@ import Charts
 
 class StatsViewController: UIViewController{
   
+  @IBOutlet weak var averageCard: UIButton!
+  @IBOutlet weak var todayCard: UIButton!
+  @IBOutlet weak var highestCard: UIButton!
+  @IBOutlet weak var lowestCard: UIButton!
   @IBOutlet weak var barChart: BarChartView!
   var days: [String]!
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    var attendanceArray = [String]()
-    let calendar = Calendar.current
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
+    let weekOfData = HomeViewController().weekOfData
+    days = weekOfData.map { $0.0.components(separatedBy: "-")[2].components(separatedBy: "T")[0] }
+    let attendanceCount = weekOfData.map { Double($0.1) }
     
-//    for i in 0 ..< attendanceArray.count {
-//      days = attendanceArray.reduce(days, {x,y in
-//        let adate = dateFormatter.date(from: attendanceArray[i])
-//        let day = calendar.component(.day, from: adate!)
-//        y[day] = 0
-//    }
-    
-    days = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17",
-              "18","19","20","21","22","23","24","25","26","27","28","29","30","31"]
-    let attendanceCount = [Double](repeating: 20.0, count: 31)
     setChart(dataPoints: days, values: attendanceCount)
     self.view.backgroundColor = .white
-
+    averageCard.setTitle(HomeViewController().weekDataAvg, for: .normal)
+    todayCard.setTitle(HomeViewController().weekDataToday, for: .normal)
+    highestCard.setTitle(HomeViewController().weekDataMax.1, for: .normal)
+    lowestCard.setTitle(HomeViewController().weekDataMin.1, for: .normal)
   }
   
   override func didReceiveMemoryWarning() {
@@ -47,7 +43,7 @@ class StatsViewController: UIViewController{
     var dataEntries: [BarChartDataEntry] = []
     
     for i in 0..<dataPoints.count {
-      let dataEntry = BarChartDataEntry(x: Double(dataPoints[i])!, y: values[i])
+      let dataEntry = BarChartDataEntry(x: Double(dataPoints[i]) ?? 0.0, y: values[i])
       dataEntries.append(dataEntry)
     }
     
@@ -59,6 +55,8 @@ class StatsViewController: UIViewController{
 
     
   }
+  
+  
   
   
 }

@@ -1,0 +1,33 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/gyao/Documents/School Work/Senior Year/Semester One/67-442/Attendify_iOS/build/Debug-iphonesimulator/Toast-Swift/Toast_Swift.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Toast-Swift-umbrella.h",
+          'external-contents': "/Users/gyao/Documents/School Work/Senior Year/Semester One/67-442/Attendify_iOS/Pods/Target Support Files/Toast-Swift/Toast-Swift-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "Toast_Swift-Swift.h",
+          'external-contents': "/Users/gyao/Documents/School Work/Senior Year/Semester One/67-442/Attendify_iOS/build/Debug-iphonesimulator/Toast-Swift/Toast_Swift.framework/Headers/Toast_Swift-Swift.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/gyao/Documents/School Work/Senior Year/Semester One/67-442/Attendify_iOS/build/Debug-iphonesimulator/Toast-Swift/Toast_Swift.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/gyao/Documents/School Work/Senior Year/Semester One/67-442/Attendify_iOS/build/Pods.build/Debug-iphonesimulator/Toast-Swift.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}

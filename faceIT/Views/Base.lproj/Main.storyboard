@@ -71,6 +71,9 @@
                                 <state key="normal" title="67-272" backgroundImage="Screen Shot 2018-11-28 at 3.40.02 PM">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeCourse:" destination="yyZ-oC-a77" eventType="touchUpInside" id="D7D-Yd-GBM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBA-mL-Hfv">
                                 <rect key="frame" x="23" y="630" width="328" height="148"/>
@@ -327,7 +330,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="averageCard" destination="axa-sb-1sq" id="FxZ-XV-Y4l"/>
                         <outlet property="barChart" destination="egU-cv-cnW" id="BVt-4V-Ma1"/>
+                        <outlet property="highestCard" destination="wfK-Ph-gdv" id="VPU-sg-1sv"/>
+                        <outlet property="lowestCard" destination="n1o-Lc-i35" id="oYp-C7-azt"/>
+                        <outlet property="todayCard" destination="GbU-iE-WUX" id="7Pu-s7-JxC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLm-aT-HLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
