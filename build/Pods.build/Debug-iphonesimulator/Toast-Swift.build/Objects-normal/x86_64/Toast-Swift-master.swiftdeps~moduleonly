@@ -1,0 +1,5 @@
+version: "Apple Swift version 4.2.1 (swiftlang-1000.11.42 clang-1000.11.45.1)"
+options: "28d09debfa344e201ec00b48d3f04179"
+build_time: [1543442271, 307906000]
+inputs:
+  "/Users/gyao/Documents/School Work/Senior Year/Semester One/67-442/Attendify_iOS/Pods/Toast-Swift/Toast/Toast.swift": [1543442253, 0]

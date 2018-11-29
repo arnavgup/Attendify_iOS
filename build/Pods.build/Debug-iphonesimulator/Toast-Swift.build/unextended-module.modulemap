@@ -1,0 +1,10 @@
+framework module Toast_Swift {
+  umbrella header "Toast-Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module Toast_Swift.__Swift {
+    exclude header "Toast_Swift-Swift.h"
+}

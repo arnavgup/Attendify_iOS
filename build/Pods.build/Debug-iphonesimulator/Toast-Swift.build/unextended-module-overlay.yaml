@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/gyao/Documents/School Work/Senior Year/Semester One/67-442/Attendify_iOS/build/Debug-iphonesimulator/Toast-Swift/Toast_Swift.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/gyao/Documents/School Work/Senior Year/Semester One/67-442/Attendify_iOS/build/Pods.build/Debug-iphonesimulator/Toast-Swift.build/unextended-module.modulemap",
+    }]
+  }]
+}

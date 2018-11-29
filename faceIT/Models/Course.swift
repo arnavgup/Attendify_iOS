@@ -12,7 +12,7 @@ class Course {
     
     // Need course ID because all future RoR API calls
     // need to be filtered by the unique class ID
-    let courseId: Int
+    var courseId: Int
     
     init(courseId: Int) {
         self.courseId = courseId
@@ -118,16 +118,6 @@ class Course {
                       state = 1
                       break
                 }
-//                print(adate)
-//                print("\(Date())".components(separatedBy: " ")[0])
-//                if (adate == "\(Date())".components(separatedBy: " ")[0]) {
-//                    var lastInfo = enrolledStudents[aid]
-//                    lastInfo!["attendance_id"] = attendance.1["id"]
-//                    lastInfo!["status"] = attendance.1["attendance_type"]
-//                    enrolledStudents[aid] = lastInfo
-//                    state = 1
-//                    break
-//                }
             }
             if (state == 0) {
                 var lastInfo = enrolledStudents[aid]
@@ -144,8 +134,8 @@ class Course {
     //    list of Student objects.
     func getStudents() -> [Student] {
         var enrolledStudents = self.getAttendances(currentDict: getphotos(currentDict: getStudentsInfo(currentDict: getEnrollments())))
-        print(enrolledStudents)
-        
+//        print(enrolledStudents)
+      
         let finalResponse = Dictionary(uniqueKeysWithValues:
             enrolledStudents.map { arg in (arg.key,
                                            Student(id: String(describing: arg.value["id"]),
@@ -159,7 +149,7 @@ class Course {
         
     }
     
-    // 6) This is the method FacerecognitionController should call at the end
+    //    This is the method FacerecognitionController should call at the end
     //    of the session to send a series of POST requests to the RoR API
     func updateAttendance(enrolledStudents: [Student]) -> () {
         for student in enrolledStudents {
@@ -205,4 +195,70 @@ class Course {
             task.resume()
         }
     }
+  
+    func getCourses() -> [(String,Int)] {
+      let attendances: NSURL = NSURL(string: "https://attendify.herokuapp.com:443/courses")!
+      let eattendanceData = NSData(contentsOf: attendances as URL)!
+      let response = try! JSON(data: eattendanceData as Data)
+      var allCourses : [(String,Int)] = [(String,Int)]()
+      for course in response {
+        allCourses.append((course.1["class_number"].string ?? "",course.1["id"].int ?? 1))
+      }
+      return allCourses
+    }
+  
+    func getWeeklyAttendance() -> [String : Int] {
+      print("In weekly")
+      let attendances: NSURL = NSURL(string: "https://attendify.herokuapp.com:443/attendances?for_class=\(courseId)")!
+      let eattendanceData = NSData(contentsOf: attendances as URL)!
+      let response = try! JSON(data: eattendanceData as Data)
+      var weekOfDate : [String : [String]] = [String : [String]]()
+      print(response)
+      for anAttendance in response {
+        let andrew = anAttendance.1["andrew_id"].string ?? ""
+        let date = anAttendance.1["date"].string ?? ""
+        let status = anAttendance.1["attendance_type"].string ?? ""
+        if (status == "Present") {
+          var prevPresent = weekOfDate[date] ?? []
+          prevPresent.append(andrew)
+          weekOfDate[date] = prevPresent
+        }
+      }
+      
+      // weekOfData should now contain only present students of each day
+      // ie. [day1 : [gyao, arnavgup,...]]
+      return weekOfDate.mapValues {value in
+        return value.count}
+    }
+
+    func calcToday() -> String {
+      let weeklyAttendance = self.getWeeklyAttendance()
+      return String(weeklyAttendance["\(Date())"] ?? 0)
+    }
+  
+    func calcWeekAverage() -> String {
+      let weeklyAttendance = self.getWeeklyAttendance()
+      return String(weeklyAttendance.reduce(0, { x, y in
+        x + y.value
+      }) / weeklyAttendance.count)
+    }
+  
+    func calcWeekMax() -> (String,String) {
+      let weeklyAttendance = self.getWeeklyAttendance()
+      let maxAttendance = String(weeklyAttendance.reduce(Int.min, { x, y in
+        max(x,y.value)}))
+      let date = (weeklyAttendance as NSDictionary).allKeys(for: Int(maxAttendance)) as! [String]
+      return (date[0], maxAttendance)
+    }
+  
+    // min not considering 0, only non zero anwers
+    func calcWeekMin() -> (String,String) {
+      let weeklyAttendance = self.getWeeklyAttendance()
+      let minAttendance = String(weeklyAttendance.reduce(Int.max, { x, y in
+        min(x,y.value)}))
+      let date = (weeklyAttendance as NSDictionary).allKeys(for: Int(minAttendance)) as! [String]
+      return (date[0], minAttendance)
+  }
+  
+  
 }

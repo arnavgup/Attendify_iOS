@@ -18,6 +18,7 @@ import Toast_Swift
 var mlmodel = Faces_v4().model
 var model: VNCoreMLModel = try! VNCoreMLModel(for: Faces_v4().model)
 
+
 extension UIViewController {
     
     func showToast(message : String) {
@@ -40,7 +41,15 @@ extension UIViewController {
     } }
 
 class HomeViewController: UIViewController, ARSCNViewDelegate {
-
+  
+    var courseIndex = 0
+    var courseId = 1
+    var course = Course.init(courseId: 1)
+    var weekOfData = Course.init(courseId: 1).getWeeklyAttendance()
+    var weekDataAvg = Course.init(courseId: 1).calcWeekAverage()
+    var weekDataToday = Course.init(courseId: 1).calcToday()
+    var weekDataMax = Course.init(courseId: 1).calcWeekMax()
+    var weekDataMin = Course.init(courseId: 1).calcWeekMin()
     @IBOutlet var startAttendanceButton: UIButton!
     @IBOutlet var statsButton: UIButton!
     @IBOutlet var courseButton: UIButton!
@@ -121,6 +130,20 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
             task.resume()
         }
     }
+  
+  @IBAction func changeCourse(_ sender: AnyObject) {
+    print("Button tap leads to function call")
+    let allCourses = course.getCourses()
+    courseIndex += 1
+    if (courseIndex > allCourses.count - 1) {
+      courseIndex = 0
+    }
+    self.courseId = allCourses[courseIndex].1
+    course = Course.init(courseId: courseId)
+    sender.setTitle(allCourses[courseIndex].0, for: .normal)
+  }
+  
+//
     
 
     /*
