@@ -22,7 +22,7 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     var courseIndex = 0
     var courseId = 1
     var course = Course.init(courseId: 1)
-    var weekOfData = Course.init(courseId: 1).getWeeklyAttendance()
+    var weekOfData : [String : Int] = [:]//  = course.getWeeklyAttendance()
     var weekDataAvg = Course.init(courseId: 1).calcWeekAverage()
     var weekDataToday = Course.init(courseId: 1).calcToday()
     var weekDataMax = Course.init(courseId: 1).calcWeekMax()
@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var manualAddButton: UIButton!
     @IBOutlet var downloadStatus: UILabel!
     @IBOutlet var activityView: UIActivityIndicatorView!
-    @IBOutlet var barButtonItem: UIBarButtonItem!
+//    @IBOutlet var barButtonItem: UIBarButtonItem!
     @IBOutlet var sceneView: ARSCNView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +79,7 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
 //            }
 //        }
         // Do any additional setup after loading the view.
+      self.weekOfData = self.course.getWeeklyAttendance()
     }
     
     func download(destinationFileUrl: URL, completionBlock: @escaping (String) -> Void) {
