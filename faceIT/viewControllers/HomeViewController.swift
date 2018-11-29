@@ -15,14 +15,16 @@ import Async
 import PKHUD
 import Toast_Swift
 
+var course = Course.init(courseId: 1)
 
 class HomeViewController: UIViewController, ARSCNViewDelegate {
     var mlmodel = Faces_v4().model
     var model: VNCoreMLModel = try! VNCoreMLModel(for: Faces_v4().model)
     var courseIndex = 0
     var courseId = 1
-    var course = Course.init(courseId: 1)
+    
     var weekOfData = Course.init(courseId: 1).getWeeklyAttendance()
+    
     var weekDataAvg = Course.init(courseId: 1).calcWeekAverage()
     var weekDataToday = Course.init(courseId: 1).calcToday()
     var weekDataMax = Course.init(courseId: 1).calcWeekMax()
