@@ -238,9 +238,9 @@ class Course {
   
     func calcWeekAverage() -> String {
       let weeklyAttendance = self.getWeeklyAttendance()
-      return String(weeklyAttendance.reduce(0, { x, y in
+      return String(Double(weeklyAttendance.reduce(0, { x, y in
         x + y.value
-      }) / weeklyAttendance.count)
+      })) / Double(weeklyAttendance.count))
     }
   
     func calcWeekMax() -> (String,String) {
@@ -251,7 +251,7 @@ class Course {
       return (date[0], maxAttendance)
     }
   
-    // min not considering 0, only non zero anwers
+  
     func calcWeekMin() -> (String,String) {
       let weeklyAttendance = self.getWeeklyAttendance()
       let minAttendance = String(weeklyAttendance.reduce(Int.max, { x, y in
