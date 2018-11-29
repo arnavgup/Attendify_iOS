@@ -15,30 +15,6 @@ import Async
 import PKHUD
 import Toast_Swift
 
-var mlmodel = Faces_v4().model
-var model: VNCoreMLModel = try! VNCoreMLModel(for: Faces_v4().model)
-
-extension UIViewController {
-    
-    func showToast(message : String) {
-        
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.textAlignment = .center;
-        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    } }
-
 class HomeViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var startAttendanceButton: UIButton!
@@ -59,11 +35,12 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
-        
-        self.downloadStatus.text = "Fetching latest model"
+        self.sceneView.layer.cornerRadius = 10
+        self.sceneView.layer.masksToBounds = true
+        self.downloadStatus.text = modelStatus
         self.startAttendanceButton.layer.cornerRadius = 10
         self.startAttendanceButton.layer.masksToBounds = true
-        self.startAttendanceButton.isEnabled = false
+//        self.startAttendanceButton.isEnabled = false
         self.statsButton.layer.cornerRadius = 10
         self.statsButton.layer.masksToBounds = true
         self.courseButton.layer.cornerRadius = 10
@@ -71,26 +48,26 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
         self.manualAddButton.layer.cornerRadius = 10
         self.manualAddButton.layer.masksToBounds = true
 //        barButtonItem.image = UIImage(named: "menu")
-        //         Create destination URL
-        let documentsUrl:URL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL!
-        let destinationFileUrl = documentsUrl.appendingPathComponent("Download\(Int.random(in: 0 ... 10000)).mlmodel")
-        
-        self.download(destinationFileUrl: destinationFileUrl) { (output) in
-            DispatchQueue.main.async{
-                do {
-                    let compiledUrl = try MLModel.compileModel(at: destinationFileUrl)
-                    mlmodel = try MLModel(contentsOf: compiledUrl)
-                    self.activityView.stopAnimating()
-                    self.downloadStatus.text = "Got the latest model, ready!"
-                    self.startAttendanceButton.isEnabled = true
-
-                } catch {
-                    print("Unexpected error: \(error).")
-                }
-                
-                model = try! VNCoreMLModel(for: mlmodel)
-            }
-        }
+//        //         Create destination URL
+//        let documentsUrl:URL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL!
+//        let destinationFileUrl = documentsUrl.appendingPathComponent("Download\(Int.random(in: 0 ... 10000)).mlmodel")
+//        
+//        self.download(destinationFileUrl: destinationFileUrl) { (output) in
+//            DispatchQueue.main.async{
+//                do {
+//                    let compiledUrl = try MLModel.compileModel(at: destinationFileUrl)
+//                    mlmodel = try MLModel(contentsOf: compiledUrl)
+//                    self.activityView.stopAnimating()
+//                    self.downloadStatus.text = "Got the latest model, ready!"
+//                    self.startAttendanceButton.isEnabled = true
+//
+//                } catch {
+//                    print("Unexpected error: \(error).")
+//                }
+//
+//                model = try! VNCoreMLModel(for: mlmodel)
+//            }
+//        }
         // Do any additional setup after loading the view.
     }
     
