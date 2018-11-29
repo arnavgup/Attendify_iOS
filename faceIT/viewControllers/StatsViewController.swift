@@ -18,11 +18,11 @@ class StatsViewController: UIViewController{
   @IBOutlet weak var lowestCard: UIButton!
   @IBOutlet weak var barChart: BarChartView!
   weak var axisFormatDelegate: IAxisValueFormatter?
-  var months: [String]! = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-
+  var months: [String]! //= ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+  
   
   var days: [String]!
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     axisFormatDelegate = self
@@ -37,7 +37,7 @@ class StatsViewController: UIViewController{
     lowestCard.setTitle(HomeViewController().weekDataMin.1, for: .normal)
     setup(chartView: barChart)
     populateData(dataPoints: days, values: attendanceCount)
-//    populateData(dataPoints,values)
+    //    populateData(dataPoints,values)
     
   }
   
@@ -51,16 +51,17 @@ class StatsViewController: UIViewController{
     chartView.leftAxis.axisLineColor = .clear
     chartView.rightAxis.enabled = false
     chartView.drawGridBackgroundEnabled = false
+    chartView.drawValueAboveBarEnabled = false
     chartView.xAxis.labelPosition = .bottom
     chartView.xAxis.axisLineColor = .clear
     chartView.fitBars = true
-    chartView.drawValueAboveBarEnabled = false
     chartView.chartDescription?.text = ""
     barChart.noDataText = ""
   }
   
   func populateData(dataPoints: [String], values: [Double]) {
     var dataEntries: [BarChartDataEntry] = []
+    print(dataPoints.count)
     for i in 0..<dataPoints.count {
       let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
       dataEntries.append(dataEntry)
@@ -69,11 +70,11 @@ class StatsViewController: UIViewController{
     let chartData = BarChartData(dataSet: chartDataSet)
     barChart.data = chartData
     barChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+    barChart.noDataText = ""
     let xAxisValue = barChart.xAxis
     xAxisValue.valueFormatter = axisFormatDelegate
-    barChart.noDataText = ""
   }
-
+  
 }
 
 extension StatsViewController: IAxisValueFormatter {
