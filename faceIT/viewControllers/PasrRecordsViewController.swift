@@ -14,7 +14,7 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var filter: UISegmentedControl!
     @IBOutlet var date: UIDatePicker!
     
-   var attendance: [Student] = Course(courseId: 1).getStudents()
+   var attendance: [Student] = todayAttendance
     override func viewDidLoad() {
         super.viewDidLoad()
         attendance.sort(by: { $0.andrew > $1.andrew })
@@ -72,6 +72,7 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
         else{
             cell.statusPic.image = UIImage(named: "no.png")
         }
+
         do {
             let url = URL(string: (attendance[indexPath.row].picture))!
             let data = try Data(contentsOf: url)
@@ -102,9 +103,16 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func datePickerChanged(_ sender: Any) {
         date.datePickerMode = UIDatePickerMode.date
         var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         var selectedDate = dateFormatter.string(from: date.date)
         print(selectedDate)
+        for (day, at) in weekOfAttendance{
+            print(at)
+            if(day == selectedDate){attendance = at}
+//            else{attendance = []}
+        }
+        print(attendance)
+        self.tableview.reloadData()
     }
     
     @IBAction func markAll(_ sender: Any){
