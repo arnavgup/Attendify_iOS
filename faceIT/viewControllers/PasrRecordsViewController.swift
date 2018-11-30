@@ -52,10 +52,10 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if (attendance[indexPath.row].status == "Present")
         {
-            cell.backgroundColor = UIColor(red: 0.0078, green: 0.4078, blue: 0.1333, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 0.8549, green: 0.9686, blue: 0.6863, alpha: 1.0)
         }
         else{
-            cell.backgroundColor = UIColor(red: 0.7176, green: 0.0353, blue: 0.0118, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 0.9686, green: 0.7294, blue: 0.6863, alpha: 1.0)
         }
     }
     
@@ -65,7 +65,13 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableview.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! StudentCollectionViewCell
         
         cell.name.text = attendance[indexPath.row].name
-        
+        if (attendance[indexPath.row].status == "Present")
+        {
+            cell.statusPic.image = UIImage(named: "yes.png")
+        }
+        else{
+            cell.statusPic.image = UIImage(named: "no.png")
+        }
         do {
             let url = URL(string: (attendance[indexPath.row].picture))!
             let data = try Data(contentsOf: url)
@@ -99,6 +105,13 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
         dateFormatter.dateFormat = "dd MMM yyyy"
         var selectedDate = dateFormatter.string(from: date.date)
         print(selectedDate)
+    }
+    
+    @IBAction func markAll(_ sender: Any){
+        for student in attendance{
+            student.status = "Present"
+        }
+        self.tableview.reloadData()
     }
 
     /*
