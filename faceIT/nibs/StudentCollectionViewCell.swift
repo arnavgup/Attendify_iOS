@@ -12,6 +12,7 @@ class StudentCollectionViewCell: UITableViewCell {
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var andrewId: UILabel!
+    @IBOutlet weak var statusPic: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
