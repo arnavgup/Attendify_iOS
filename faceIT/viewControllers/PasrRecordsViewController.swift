@@ -14,11 +14,11 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var filter: UISegmentedControl!
     @IBOutlet var date: UIDatePicker!
     
-   var attendance: [Student] = Course(courseId: 1).getStudents()
+//   var attendance: [Student] = Course(courseId: 1).getStudents()
     override func viewDidLoad() {
         super.viewDidLoad()
-        attendance.sort(by: { $0.andrew > $1.andrew })
-        for student in attendance{
+        todayAttendance.sort(by: { $0.andrew > $1.andrew })
+        for student in todayAttendance{
             if( student.status == "Optional(Present)"){student.status = "Present"}
             if( student.status == "Optional(Absent)"){student.status = "Absent"}
         }
@@ -31,18 +31,18 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(attendance[indexPath.row].status == "Present"){
-            attendance[indexPath.row].status = "Absent"
+        if(todayAttendance[indexPath.row].status == "Present"){
+            todayAttendance[indexPath.row].status = "Absent"
         }
         else{
-            attendance[indexPath.row].status = "Present"
+            todayAttendance[indexPath.row].status = "Present"
         }
         self.tableview.reloadData()
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return attendance.count
+        return todayAttendance.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,7 +50,7 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if (attendance[indexPath.row].status == "Present")
+        if (todayAttendance[indexPath.row].status == "Present")
         {
             cell.backgroundColor = UIColor(red: 0.0078, green: 0.4078, blue: 0.1333, alpha: 1.0)
         }
@@ -64,17 +64,17 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
         
         let cell = tableview.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! StudentCollectionViewCell
         
-        cell.name.text = attendance[indexPath.row].name
+        cell.name.text = todayAttendance[indexPath.row].name
         
         do {
-            let url = URL(string: (attendance[indexPath.row].picture))!
+            let url = URL(string: (todayAttendance[indexPath.row].picture))!
             let data = try Data(contentsOf: url)
             cell.picture.image = UIImage(data: data)
         }
         catch{
             print(error)
         }
-        cell.andrewId.text = attendance[indexPath.row].andrew
+        cell.andrewId.text = todayAttendance[indexPath.row].andrew
         return cell
     }
     
@@ -82,11 +82,11 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
         switch filter.selectedSegmentIndex
         {
         case 0:
-            attendance.sort(by: { $0.andrew > $1.andrew })
+            todayAttendance.sort(by: { $0.andrew > $1.andrew })
         case 1:
-            attendance.sort(by: { $0.name > $1.name })
+            todayAttendance.sort(by: { $0.name > $1.name })
         case 2:
-            attendance.sort(by: { $0.status > $1.status })
+            todayAttendance.sort(by: { $0.status > $1.status })
         default:
             break
         }

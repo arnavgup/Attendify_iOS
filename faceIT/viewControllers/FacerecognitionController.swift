@@ -24,16 +24,16 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     var 👜 = DisposeBag()
     
     var faces: [Face] = []
-    let course = Course.init(courseId: 1)
-    var attendance: [Student] = Course.init(courseId: 1).getStudents().sorted(by: { $0.name > $1.name })
-    
+//    let course = Course.init(courseId: 1)
+//    var attendance: [Student] = Course.init(courseId: 1).getStudents().sorted(by: { $0.name > $1.name })
+  
     var bounds: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for student in attendance{
+        for student in todayAttendance{
             if( student.status == "Optional(Present)"){student.status = "Present"}
             if( student.status == "Optional(Absent)"){student.status = "Absent"}
         }
@@ -89,11 +89,11 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(attendance[indexPath.row].status == "Present"){
-            attendance[indexPath.row].status = "Absent"
+        if(todayAttendance[indexPath.row].status == "Present"){
+            todayAttendance[indexPath.row].status = "Absent"
         }
         else{
-            attendance[indexPath.row].status = "Present"
+            todayAttendance[indexPath.row].status = "Present"
         }
         Async.main{
             self.tableview.reloadData()
@@ -105,7 +105,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return attendance.count
+        return todayAttendance.count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -113,9 +113,9 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if (attendance[indexPath.row].status == "Present" || attendance[indexPath.row].status == "Optional(Present)")
+        if (todayAttendance[indexPath.row].status == "Present" || todayAttendance[indexPath.row].status == "Optional(Present)")
         {
-            attendance[indexPath.row].status = "Present"
+            todayAttendance[indexPath.row].status = "Present"
             cell.backgroundColor = UIColor(red: 0.0078, green: 0.4078, blue: 0.1333, alpha: 1.0)
         }
         else{
@@ -129,17 +129,17 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
 
         let cell = tableview.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! StudentCollectionViewCell
 
-        cell.name.text = attendance[indexPath.row].name
+        cell.name.text = todayAttendance[indexPath.row].name
         
         do {
-            let url = URL(string: (attendance[indexPath.row].picture))!
+            let url = URL(string: (todayAttendance[indexPath.row].picture))!
             let data = try Data(contentsOf: url)
             cell.picture.image = UIImage(data: data)
         }
         catch{
             print(error)
         }
-        cell.andrewId.text = attendance[indexPath.row].andrew
+        cell.andrewId.text = todayAttendance[indexPath.row].andrew
         return cell
     }
     
@@ -151,8 +151,8 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     
     func refreshLabels(){
         Async.main {
-            self.numPresent.text = "\(self.attendance.reduce(0){$1.status == "Present" ? $0+1 : $0})"
-            self.numAbsent.text = "\(self.attendance.reduce(0){$1.status == "Absent" ? $0+1 : $0})"
+            self.numPresent.text = "\(todayAttendance.reduce(0){$1.status == "Present" ? $0+1 : $0})"
+            self.numAbsent.text = "\(todayAttendance.reduce(0){$1.status == "Absent" ? $0+1 : $0})"
         }
     }
     
@@ -292,7 +292,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
         // Create new face
         guard let existentFace = results.first else {
             
-            for student in attendance{
+            for student in todayAttendance{
                 if (student.andrew == name && person.confidence > 0.6){person_name = student.name}
             }
             
@@ -313,7 +313,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
             self.faces.append(face)
 
             
-            for s in self.attendance{
+            for s in todayAttendance{
                 if(s.andrew == name)
                 {
                    s.status = "Present"
@@ -377,11 +377,11 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     
     @IBAction func submit_attendance(sender: UIButton){
         print("================FINAL ATTENDANCE======================")
-        for student in attendance{
+        for student in todayAttendance{
             print(student.name, student.status)
         }
         print("======================================")
-        course.updateAttendance(enrolledStudents: attendance)
+        course.updateAttendance(enrolledStudents: todayAttendance)
     }
     
     /// Determine the vector from the position on the screen.

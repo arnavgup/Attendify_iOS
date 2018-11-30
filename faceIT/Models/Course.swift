@@ -45,13 +45,11 @@ class Course {
         let allStudents = try! JSON(data: studentsData as Data)
         for student in allStudents {
             let aid = student.1["andrew_id"].string!
-            print(enrolledStudents[aid])
-            print(enrolledStudents)
             if (enrolledStudents[aid] != nil) {
                 let id = student.1["id"].int ?? 0
                 let fname = student.1["first_name"].string ?? ""
                 let lname = student.1["last_name"].string ?? ""
-                let info = ["id":id,"name":fname+lname] as [String : Any]
+                let info = ["id":id,"name":fname+" "+lname] as [String : Any]
                 print(info)
                 enrolledStudents[aid] = info
             }
@@ -95,7 +93,8 @@ class Course {
     //    we will add it to the enrolled student dictionary just as before,
     //    otherwise we will make a POST call and create an attendance;
     //    returning that attendance id
-    func getAttendances(currentDict : [String : [String:Any]]) -> [String : [String:Any]]  {
+    // 
+    func getTodayAttendances(currentDict : [String : [String:Any]]) -> [String : [String:Any]]  {
         var enrolledStudents:[String : [String:Any]] = currentDict
         for (andrew,_) in enrolledStudents {
             let aid = andrew
@@ -109,7 +108,7 @@ class Course {
                 // compare dates
                 // Convert from string to dates
                 let adateString = attendance.1["date"].string!.components(separatedBy: "T")[0]
-                let adate = dateFormatter.date(from: adateString)
+                let adate = dateFormatter.date(from: adateString) // fix
               if Calendar.current.compare(adate!, to: Date(), toGranularity: .day) == .orderedSame {
                       var lastInfo = enrolledStudents[aid]
                       lastInfo!["attendance_id"] = attendance.1["id"]
@@ -130,11 +129,10 @@ class Course {
     }
     
     
-    // 5) This is the method FacerecognitionController should call to get a
+    // 5) This is the method HomeViewController should call to get a
     //    list of Student objects.
     func getStudents() -> [Student] {
-        var enrolledStudents = self.getAttendances(currentDict: getphotos(currentDict: getStudentsInfo(currentDict: getEnrollments())))
-//        print(enrolledStudents)
+        let enrolledStudents = self.getTodayAttendances(currentDict: getphotos(currentDict: getStudentsInfo(currentDict: getEnrollments())))
       
         let finalResponse = Dictionary(uniqueKeysWithValues:
             enrolledStudents.map { arg in (arg.key,
@@ -148,9 +146,68 @@ class Course {
         return Array(finalResponse.values)
         
     }
+  
+  // 6) This is an additional method that will be called in HomeViewController should call
+  //    to load up the past 7 days of attendance data
+  // TODO: Change this to school days later on, and consult with Arnav to make the scroll
+  // wheel to select only on certain days
+  func getWeekAttendances() -> [String : [Student]]  {
+    print("in newly written functions")
+    var result : [String : [Student]] = [:]
+    var enrolledStudents:[String : [String:Any]] = self.getphotos(currentDict: getStudentsInfo(currentDict: getEnrollments()))
+    let today = Date()
+    var prevDay = Calendar.current.date(byAdding: .day, value: -5, to: Date())!
+    // For each day in the range of the starting date (ie. prevDay)
+    while prevDay < today {
+      print("Looping")
+      for (andrew,_) in enrolledStudents {
+        let aid = andrew
+        let attendance: NSURL = NSURL(string: "https://attendify.herokuapp.com:443/attendances?for_andrew_id=\(aid)&for_class=\(self.courseId)")!
+        let attendanceData = NSData(contentsOf: attendance as URL)!
+        let allAttendances = try! JSON(data: attendanceData as Data)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var state = 0
+        for attendance in allAttendances {
+          // compare dates
+          // Convert from string to dates
+          let adateString = attendance.1["date"].string!.components(separatedBy: "T")[0]
+          let adate = dateFormatter.date(from: adateString) // fix
+          if Calendar.current.compare(adate!, to: prevDay, toGranularity: .day) == .orderedSame {
+            var lastInfo = enrolledStudents[aid]
+            lastInfo!["attendance_id"] = attendance.1["id"].string ?? ""
+            lastInfo!["status"] = attendance.1["attendance_type"].string ?? "Absent"
+            enrolledStudents[aid] = lastInfo
+            state = 1
+            break
+          }
+        }
+        if (state == 0) {
+          var lastInfo = enrolledStudents[aid]
+          lastInfo?["attendance_id"] = ""
+          lastInfo?["status"] = "Absent"
+          enrolledStudents[aid] = lastInfo
+        }
+        
+        var currentDayAttendances = result[dateFormatter.string(from: prevDay)] ?? []
+        currentDayAttendances.append(Student(id: String(describing: enrolledStudents[aid]?["name"]),
+                                              name: enrolledStudents[aid]?["name"] as! String,
+                                              andrew: aid,
+                                              picture: enrolledStudents[aid]?["picture"]  as! String,
+                                              course_id: String(self.courseId),
+                                              status: enrolledStudents[aid]?["status"]  as! String,
+                                              attendance_id: enrolledStudents[aid]?["attendance_id"]  as! String))
+        result[dateFormatter.string(from: prevDay)] = currentDayAttendances
+        print("new result: ")
+        print(result)
+      }
+        prevDay = Calendar.current.date(byAdding: .day, value: +1, to: prevDay)!
+    }
+    print("outside loop")
     
-    //    This is the method FacerecognitionController should call at the end
-    //    of the session to send a series of POST requests to the RoR API
+    return result
+  }
+
     func updateAttendance(enrolledStudents: [Student]) -> () {
         for student in enrolledStudents {
             var status = "Present"
@@ -207,44 +264,51 @@ class Course {
       return allCourses
     }
   
-    func getWeeklyAttendance() -> [String : Int] {
-      print("In weekly")
-      let attendances: NSURL = NSURL(string: "https://attendify.herokuapp.com:443/attendances?for_class=\(courseId)")!
-      let eattendanceData = NSData(contentsOf: attendances as URL)!
-      let response = try! JSON(data: eattendanceData as Data)
-      var weekOfDate : [String : [String]] = [String : [String]]()
-      print(response)
-      for anAttendance in response {
-        let andrew = anAttendance.1["andrew_id"].string ?? ""
-        let date = anAttendance.1["date"].string ?? ""
-        let status = anAttendance.1["attendance_type"].string ?? ""
-        if (status == "Present") {
-          var prevPresent = weekOfDate[date] ?? []
-          prevPresent.append(andrew)
-          weekOfDate[date] = prevPresent
-        }
+  func getWeeklyAttendance(weekData : [String : [Student]]) -> [String : Int] {
+////      print("In weekly")
+//      let attendances: NSURL = NSURL(string: "https://attendify.herokuapp.com:443/attendances?for_class=\(courseId)")!
+//      let eattendanceData = NSData(contentsOf: attendances as URL)!
+//      let response = try! JSON(data: eattendanceData as Data)
+//      var weekOfDate : [String : [String]] = [String : [String]]()
+////      print(response)
+//      for anAttendance in response {
+//        let andrew = anAttendance.1["andrew_id"].string ?? ""
+//        let date = anAttendance.1["date"].string ?? ""
+//        let status = anAttendance.1["attendance_type"].string ?? ""
+//        if (status == "Present") {
+//          var prevPresent = weekOfDate[date] ?? []
+//          prevPresent.append(andrew)
+//          weekOfDate[date] = prevPresent
+//        }
+//      }
+      var weekOfData = weekData // self.getWeekAttendances()
+      for day in weekOfData {
+        let presentOnly = day.value.filter { $0.status == "Present"}
+        weekOfData[day.key] = presentOnly
       }
-      
       // weekOfData should now contain only present students of each day
       // ie. [day1 : [gyao, arnavgup,...]]
-      return weekOfDate.mapValues {value in
+      return weekOfData.mapValues {value in
         return value.count}
     }
 
-    func calcToday() -> String {
-      let weeklyAttendance = self.getWeeklyAttendance()
-      return String(weeklyAttendance["\(Date())"] ?? 0)
+  func calcToday(weeklyAttendance : [String : Int]) -> String {
+      let weeklyAttendance = weeklyAttendance //self.getWeeklyAttendance()
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "yyyy-MM-dd"
+      let adate = dateFormatter.string(from: Date()) // fix
+      return String(weeklyAttendance[adate] ?? 0)
     }
   
-    func calcWeekAverage() -> String {
-      let weeklyAttendance = self.getWeeklyAttendance()
+    func calcWeekAverage(weeklyAttendance : [String : Int]) -> String {
+      let weeklyAttendance = weeklyAttendance // self.getWeeklyAttendance()
       return String(Double(weeklyAttendance.reduce(0, { x, y in
         x + y.value
       })) / Double(weeklyAttendance.count))
     }
   
-    func calcWeekMax() -> (String,String) {
-      let weeklyAttendance = self.getWeeklyAttendance()
+    func calcWeekMax(weeklyAttendance : [String : Int]) -> (String,String) {
+      let weeklyAttendance = weeklyAttendance // self.getWeeklyAttendance()
       let maxAttendance = String(weeklyAttendance.reduce(Int.min, { x, y in
         max(x,y.value)}))
       let date = (weeklyAttendance as NSDictionary).allKeys(for: Int(maxAttendance)) as! [String]
@@ -252,8 +316,8 @@ class Course {
     }
   
   
-    func calcWeekMin() -> (String,String) {
-      let weeklyAttendance = self.getWeeklyAttendance()
+    func calcWeekMin(weeklyAttendance : [String : Int]) -> (String,String) {
+      let weeklyAttendance = weeklyAttendance //self.getWeeklyAttendance()
       let minAttendance = String(weeklyAttendance.reduce(Int.max, { x, y in
         min(x,y.value)}))
       let date = (weeklyAttendance as NSDictionary).allKeys(for: Int(minAttendance)) as! [String]
