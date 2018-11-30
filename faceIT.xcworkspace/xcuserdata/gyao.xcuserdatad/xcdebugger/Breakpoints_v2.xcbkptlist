@@ -6,32 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "faceIT/Models/Course.swift"
-            timestampString = "565212678.145377"
+            filePath = "faceIT/viewControllers/HomeViewController.swift"
+            timestampString = "565294824.435367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "getWeeklyAttendance()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "faceIT/Models/Course.swift"
-            timestampString = "565212678.145454"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
-            landmarkName = "getWeeklyAttendance()"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "changeCourse(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

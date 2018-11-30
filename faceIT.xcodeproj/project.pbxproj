@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0214C95321A732E2000ACBFD /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0214C95221A732E2000ACBFD /* Charts.framework */; };
-		02249B3321B06B4F004E0B03 /* BarChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02249B3221B06B4F004E0B03 /* BarChartFormatter.swift */; };
 		02A0B04921A724B400EFCF00 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0B04821A724B400EFCF00 /* StatsViewController.swift */; };
 		2E246A0F1F4B2A080015CA71 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E246A0E1F4B2A080015CA71 /* Face.swift */; };
 		2E5C6C421F2F825900749336 /* CIImage+FaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5C6C411F2F825900749336 /* CIImage+FaceDetection.swift */; };
@@ -46,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		0214C95221A732E2000ACBFD /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		02249B3221B06B4F004E0B03 /* BarChartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartFormatter.swift; sourceTree = "<group>"; };
 		02A0B04821A724B400EFCF00 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		02A0B04A21A7262600EFCF00 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		082B4C2416120C827C8E5C0E /* Pods_faceITTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_faceITTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +204,6 @@
 				478AB1922194D3E90095E231 /* Student.swift */,
 				2E246A0E1F4B2A080015CA71 /* Face.swift */,
 				478AB1AC2195FAEE0095E231 /* Course.swift */,
-				02249B3221B06B4F004E0B03 /* BarChartFormatter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,7 +288,7 @@
 				TargetAttributes = {
 					2EBDC70B1F0FC72F00243609 = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					478AB19A219563FA0095E231 = {
 						CreatedOnToolsVersion = 10.1;
@@ -398,7 +395,6 @@
 			files = (
 				478AB1AD2195FAEE0095E231 /* Course.swift in Sources */,
 				2E246A0F1F4B2A080015CA71 /* Face.swift in Sources */,
-				02249B3321B06B4F004E0B03 /* BarChartFormatter.swift in Sources */,
 				478AB1AB219571F30095E231 /* PasrRecordsViewController.swift in Sources */,
 				2EC9AD451F45DA5300784281 /* SCNVector3+Distance.swift in Sources */,
 				02A0B04921A724B400EFCF00 /* StatsViewController.swift in Sources */,
@@ -569,13 +565,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Shared Development (S3756TFG3R)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M6LYJ8LVCL;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = faceIT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dev.attendify;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.attendify.gyao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -593,13 +589,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: NovaTec Ingenieure für neue Informationstechnologien GmbH";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M6LYJ8LVCL;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = faceIT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dev.attendify;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.attendify.gyao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

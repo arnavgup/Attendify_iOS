@@ -15,18 +15,22 @@ import Async
 import PKHUD
 import Toast_Swift
 
+var course = Course.init(courseId: 1)
+var courseId = 1
+var todayAttendance: [Student] = course.getStudents().sorted(by: { $0.name > $1.name })
+var weekOfAttendance: [String : [Student]] = course.getWeekAttendances()
+var weekOfAttendanceCount : [String : Int] = course.getWeeklyAttendance(weekData: weekOfAttendance)
+var weekOfData : [String : Int] = course.getWeeklyAttendance(weekData: weekOfAttendance)
+var weekDataAvg : String = ""
+var weekDataToday  : String = ""
+var weekDataMax : (String, String) = ("","")
+var weekDataMin : (String, String) = ("","")
 
 class HomeViewController: UIViewController, ARSCNViewDelegate {
     var mlmodel = Faces_v4().model
     var model: VNCoreMLModel = try! VNCoreMLModel(for: Faces_v4().model)
     var courseIndex = 0
-    var courseId = 1
-    var course = Course.init(courseId: 1)
-    var weekOfData : [String : Int] = [:]//  = course.getWeeklyAttendance()
-    var weekDataAvg = Course.init(courseId: 1).calcWeekAverage()
-    var weekDataToday = Course.init(courseId: 1).calcToday()
-    var weekDataMax = Course.init(courseId: 1).calcWeekMax()
-    var weekDataMin = Course.init(courseId: 1).calcWeekMin()
+
     @IBOutlet var startAttendanceButton: UIButton!
     @IBOutlet var statsButton: UIButton!
     @IBOutlet var courseButton: UIButton!
@@ -79,8 +83,21 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
 //            }
 //        }
         // Do any additional setup after loading the view.
-      self.weekOfData = self.course.getWeeklyAttendance()
-    }
+      print("Updating")
+      weekOfAttendance = course.getWeekAttendances()
+      weekOfAttendanceCount = course.getWeeklyAttendance(weekData: weekOfAttendance)
+      weekOfData = course.getWeeklyAttendance(weekData: weekOfAttendance)
+      weekDataAvg = course.calcWeekAverage(weeklyAttendance: weekOfData)
+      weekDataToday = course.calcToday(weeklyAttendance: weekOfData)
+      weekDataMax = course.calcWeekMax(weeklyAttendance: weekOfData)
+      weekDataMin = course.calcWeekMin(weeklyAttendance: weekOfData)
+      print("Updated")
+      print(weekDataAvg)
+      print(weekDataToday)
+      print(weekDataMax)
+      print(weekDataMin)
+      print(weekOfData)
+  }
     
     func download(destinationFileUrl: URL, completionBlock: @escaping (String) -> Void) {
         //Create URL to the source file you want to download
@@ -117,22 +134,8 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     if (courseIndex > allCourses.count - 1) {
       courseIndex = 0
     }
-    self.courseId = allCourses[courseIndex].1
+    courseId = allCourses[courseIndex].1
     course = Course.init(courseId: courseId)
     sender.setTitle(allCourses[courseIndex].0, for: .normal)
   }
-  
-//
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
