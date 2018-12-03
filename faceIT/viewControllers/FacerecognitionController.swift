@@ -387,7 +387,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
         }
         course.updateAttendance(enrolledStudents: attendance)
         weekOfAttendance = course.getWeekAttendances()
-        weekOfAttendanceCount = course.getWeeklyAttendance(weekData: weekOfAttendance)
+        weekOfData = course.getWeeklyAttendance(weekData: weekOfAttendance)
     }
     
     /// Determine the vector from the position on the screen.

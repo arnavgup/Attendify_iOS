@@ -33,13 +33,7 @@ class StatsViewController: UIViewController{
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    self.barChart.noDataTextColor = UIColor.white
-//    self.barChart.noDataText = "asdf"
     axisFormatDelegate = self
-//    averageCard.isEnabled = false
-//    todayCard.isEnabled = false
-//    highestCard.isEnabled = false
-//    lowestCard.isEnabled = false
     self.showButton.layer.cornerRadius = 10
     self.showButton.layer.masksToBounds = true
     self.returnButton.layer.cornerRadius = 10
@@ -48,10 +42,12 @@ class StatsViewController: UIViewController{
     self.barChart.invalidateIntrinsicContentSize()
     let weekData = weekOfData
     days = weekData.map { $0.0.components(separatedBy: "-")[1]+"/"+$0.0.components(separatedBy: "-")[2].components(separatedBy: "T")[0] }
-//    days = days.sorted {$0. < $1.key}
     let x = days
     days = x?.sorted()
-    let attendanceCount = weekData.map { Double($0.1) }
+    let attendanceCount = weekData.sorted(by: { $0.0 < $1.0 }).map( { Double($0.1) })
+    print("CHECK HERE!!!")
+    print(days)
+    print(attendanceCount)
     averageCard.setTitle(weekDataAvg, for: .normal)
     averageCardMetric.text = "Students"
     todayCard.setTitle(weekDataToday, for: .normal)
@@ -60,10 +56,8 @@ class StatsViewController: UIViewController{
     highestCardMetric.text = "Students"
     lowestCard.setTitle(weekDataMin.1, for: .normal)
     lowestCardMetric.text = "Students"
-    setup(chartView: barChart)
     populateData(dataPoints: days, values: attendanceCount)
-    //    populateData(dataPoints,values)
-    
+    setup(chartView: barChart)
   }
   
   override func didReceiveMemoryWarning() {
@@ -74,16 +68,18 @@ class StatsViewController: UIViewController{
     chartView.leftAxis.axisMinimum = 0
     chartView.leftAxis.axisMaximum = Double(weekDataMax.1)!
     chartView.leftAxis.axisLineColor = .clear
+    chartView.leftAxis.granularity = 1
     chartView.rightAxis.enabled = false
     chartView.drawGridBackgroundEnabled = false
     chartView.drawValueAboveBarEnabled = false
     chartView.xAxis.labelPosition = .bottom
     chartView.xAxis.axisLineColor = .clear
+    chartView.xAxis.granularity = 1
     chartView.fitBars = true
     chartView.chartDescription?.text = ""
-//    chartView.noDataText = ""
-//    chartView.noDataTextColor = UIColor.white
     chartView.backgroundColor = UIColor.white
+    chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
+    chartView.xAxis.valueFormatter = axisFormatDelegate
   }
   
   func populateData(dataPoints: [String], values: [Double]) {
@@ -98,13 +94,11 @@ class StatsViewController: UIViewController{
     yformatter.minimumFractionDigits = 0
     chartData.setValueFormatter(DefaultValueFormatter(formatter: yformatter))
     barChart.data = chartData
-    barChart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0)
-//    barChart.noDataText = ""
-    let xAxisValue = barChart.xAxis
-    xAxisValue.valueFormatter = axisFormatDelegate
-    
-    
+    barChart.data?.setDrawValues(false)
   }
+  
+  
+  
   @IBAction func switchDataMetric(_ sender: AnyObject) {
     state = !state
     if (state) {
@@ -133,8 +127,6 @@ class StatsViewController: UIViewController{
       } else {
         lowestCard.setTitle("0.0", for: .normal)
       }
-        print("--------------------------------")
-        print(String(format:"%f",averageData))
       averageCardMetric.text = "%"
       todayCardMetric.text = "%"
       highestCardMetric.text = "%"
@@ -161,6 +153,10 @@ class StatsViewController: UIViewController{
 extension StatsViewController: IAxisValueFormatter {
 
   func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+    let weekData = weekOfData
+    days = weekData.map { $0.0.components(separatedBy: "-")[1]+"/"+$0.0.components(separatedBy: "-")[2].components(separatedBy: "T")[0] }
+    let x = days
+    days = x?.sorted()
     return days[Int(value)]
   }
 }
