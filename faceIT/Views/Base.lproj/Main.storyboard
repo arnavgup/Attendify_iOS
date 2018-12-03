@@ -101,7 +101,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Th6-nt-aYT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="Plg-qD-72z">
                     <connections>
-                        <segue destination="TzA-2B-JQI" kind="modal" id="km1-MC-mDm"/>
+                        <segue destination="TzA-2B-JQI" kind="modal" modalTransitionStyle="flipHorizontal" id="km1-MC-mDm"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -197,12 +197,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ajd-yT-oMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="mTh-EJ-IYY">
                     <connections>
-                        <segue destination="d7p-cC-pfb" kind="show" id="pnv-tE-jpp"/>
+                        <segue destination="d7p-cC-pfb" kind="modal" modalTransitionStyle="flipHorizontal" id="pnv-tE-jpp"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="Gve-7a-v8w">
                     <connections>
-                        <segue destination="36H-ty-8BW" kind="show" id="f6g-DP-PUT"/>
+                        <segue destination="36H-ty-8BW" kind="modal" modalTransitionStyle="flipHorizontal" id="f6g-DP-PUT"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -274,12 +274,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNM-fi-Kf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="trb-nK-G5t">
                     <connections>
-                        <segue destination="TzA-2B-JQI" kind="show" id="sxg-hh-gnJ"/>
+                        <segue destination="TzA-2B-JQI" kind="modal" modalTransitionStyle="flipHorizontal" id="sxg-hh-gnJ"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="0Mc-ex-1YN">
                     <connections>
-                        <segue destination="dAa-ad-2Tl" kind="show" id="xpY-b4-FOU"/>
+                        <segue destination="dAa-ad-2Tl" kind="modal" modalTransitionStyle="flipHorizontal" id="xpY-b4-FOU"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -377,7 +377,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nFz-4c-hjY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="RFr-70-fmY">
                     <connections>
-                        <segue destination="36H-ty-8BW" kind="show" id="Kem-JU-vD2"/>
+                        <segue destination="36H-ty-8BW" kind="modal" modalTransitionStyle="flipHorizontal" id="Kem-JU-vD2"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -942,8 +942,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Rne-Vz-iRd"/>
-        <segue reference="Kem-JU-vD2"/>
-        <segue reference="sxg-hh-gnJ"/>
+        <segue reference="f6g-DP-PUT"/>
+        <segue reference="km1-MC-mDm"/>
         <segue reference="pnv-tE-jpp"/>
     </inferredMetricsTieBreakers>
 </document>
