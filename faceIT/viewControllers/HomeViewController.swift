@@ -18,9 +18,8 @@ import Toast_Swift
 var course = Course.init(courseId: 1)
 var courseId = 1
 var todayAttendance: [Student] = course.getStudents().sorted(by: { $0.name > $1.name })
-var weekOfAttendance: [String : [Student]] = course.getWeekAttendances()
-var weekOfAttendanceCount : [String : Int] = course.getWeeklyAttendance(weekData: weekOfAttendance)
-var weekOfData : [String : Int] = course.getWeeklyAttendance(weekData: weekOfAttendance)
+var weekOfAttendance: [String : [Student]] = course.getWeekAttendances() // KEY
+var weekOfData : [String : Int] = [:] // course.getWeeklyAttendance(weekData: weekOfAttendance)
 var weekDataAvg : String = ""
 var weekDataToday  : String = ""
 var weekDataMax : (String, String) = ("","")
@@ -62,7 +61,6 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
         // Do any additional setup after loading the view.
       print("Updating")
       weekOfData = course.getWeeklyAttendance(weekData: weekOfAttendance)
-      print(weekOfData)
       weekDataAvg = course.calcWeekAverage(weeklyAttendance: weekOfData)
       weekDataToday = course.calcToday(weeklyAttendance: weekOfData)
       weekDataMax = course.calcWeekMax(weeklyAttendance: weekOfData)

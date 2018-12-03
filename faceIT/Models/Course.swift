@@ -50,7 +50,6 @@ class Course {
                 let fname = student.1["first_name"].string ?? ""
                 let lname = student.1["last_name"].string ?? ""
                 let info = ["id":id,"name":fname+" "+lname] as [String : Any]
-                print(info)
                 enrolledStudents[aid] = info
             }
         }
@@ -152,23 +151,20 @@ class Course {
   // TODO: Change this to school days later on, and consult with Arnav to make the scroll
   // wheel to select only on certain days
   func getWeekAttendances() -> [String : [Student]]  {
-    print("in newly written functions")
     var result : [String : [Student]] = [:]
     var enrolledStudents:[String : [String:Any]] = self.getphotos(currentDict: getStudentsInfo(currentDict: getEnrollments()))
     var today = Date()
     var prevDay = Calendar.current.date(byAdding: .day, value: -4, to: Date())!
+    today = Calendar.current.date(byAdding: .day, value: +1, to: today)! // This is sketchy; moving day up by one
     // For each day in the range of the starting date (ie. prevDay)
-    print("DATE:")
-    print(today)
     while prevDay <= today {
-      print("Looping")
-      print(prevDay)
       for (andrew,_) in enrolledStudents {
         let aid = andrew
         let attendance: NSURL = NSURL(string: "https://attendify.herokuapp.com:443/attendances?for_andrew_id=\(aid)&for_class=\(self.courseId)")!
         let attendanceData = NSData(contentsOf: attendance as URL)!
         let allAttendances = try! JSON(data: attendanceData as Data)
         let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
         dateFormatter.dateFormat = "yyyy-MM-dd"
         var state = 0
         for attendance in allAttendances {
@@ -201,14 +197,9 @@ class Course {
                                               status: enrolledStudents[aid]?["status"]  as! String,
                                               attendance_id: enrolledStudents[aid]?["attendance_id"]  as! String))
         result[dateFormatter.string(from: prevDay)] = currentDayAttendances
-        print("new result: ")
-        print(result)
       }
         prevDay = Calendar.current.date(byAdding: .day, value: +1, to: prevDay)!
-        print("NEW DATE")
-        print(prevDay)
     }
-    print("outside loop")
     
     return result
   }
@@ -240,7 +231,6 @@ class Course {
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
                 request.httpMethod = "PATCH"
-                print(student.andrew, student.status)
                 dict = ["id": student.attendance_id,"andrew_id": student.andrew, "date": "\(Date())", "course_id": student.course_id, "attendance_type": status]
             }
             let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
