@@ -21,6 +21,8 @@ class StatsViewController: UIViewController{
   @IBOutlet weak var highestCardMetric: UILabel!
   @IBOutlet weak var lowestCardMetric: UILabel!
   @IBOutlet weak var changeMetric: UIButton!
+    @IBOutlet weak var showButton:UIButton!
+    @IBOutlet weak var returnButton:UIButton!
   @IBOutlet weak var barChart: BarChartView!
   weak var axisFormatDelegate: IAxisValueFormatter?
   let yformatter = NumberFormatter()
@@ -38,6 +40,10 @@ class StatsViewController: UIViewController{
 //    todayCard.isEnabled = false
 //    highestCard.isEnabled = false
 //    lowestCard.isEnabled = false
+    self.showButton.layer.cornerRadius = 10
+    self.showButton.layer.masksToBounds = true
+    self.returnButton.layer.cornerRadius = 10
+    self.returnButton.layer.masksToBounds = true
     self.view.backgroundColor = UIColor.white
     self.barChart.invalidateIntrinsicContentSize()
     let weekData = weekOfData
@@ -108,25 +114,27 @@ class StatsViewController: UIViewController{
       let maxData = (Double(weekDataMax.1)!/Double(todayAttendance.count)) * 100.00
       let minData = (Double(weekDataMin.1)!/Double(todayAttendance.count)) * 100.00
       if (!averageData.isNaN) {
-        averageCard.setTitle(String(format:"%f",averageData), for: .normal)
+        averageCard.setTitle(String(format:"%.1f",averageData), for: .normal)
       } else {
-        averageCard.setTitle("0.00", for: .normal)
+        averageCard.setTitle("0.0", for: .normal)
       }
       if (!todayData.isNaN) {
-        todayCard.setTitle(String(format:"%f",todayData), for: .normal)
+        todayCard.setTitle(String(format:"%.1f",todayData), for: .normal)
       } else {
-        todayCard.setTitle("0.00", for: .normal)
+        todayCard.setTitle("0.0", for: .normal)
       }
       if (!maxData.isNaN) {
-        highestCard.setTitle(String(format:"%f",maxData), for: .normal)
+        highestCard.setTitle(String(format:"%.1f",maxData), for: .normal)
       } else {
-        highestCard.setTitle("0.00", for: .normal)
+        highestCard.setTitle("0.0", for: .normal)
       }
       if (!minData.isNaN) {
-        lowestCard.setTitle(String(format:"%f",minData), for: .normal)
+        lowestCard.setTitle(String(format:"%.1f",minData), for: .normal)
       } else {
-        lowestCard.setTitle("0.00", for: .normal)
+        lowestCard.setTitle("0.0", for: .normal)
       }
+        print("--------------------------------")
+        print(String(format:"%f",averageData))
       averageCardMetric.text = "%"
       todayCardMetric.text = "%"
       highestCardMetric.text = "%"

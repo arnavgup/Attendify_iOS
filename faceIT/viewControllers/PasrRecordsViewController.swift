@@ -13,10 +13,16 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet var tableview: UITableView!
     @IBOutlet var filter: UISegmentedControl!
     @IBOutlet var date: UIDatePicker!
+    @IBOutlet weak var markButton:UIButton!
+    @IBOutlet weak var returnButton:UIButton!
     
    var attendance: [Student] = todayAttendance
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.markButton.layer.cornerRadius = 10
+        self.markButton.layer.masksToBounds = true
+        self.returnButton.layer.cornerRadius = 10
+        self.returnButton.layer.masksToBounds = true
         attendance.sort(by: { $0.andrew > $1.andrew })
         for student in attendance{
             if( student.status == "Optional(Present)"){student.status = "Present"}
