@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0214C95321A732E2000ACBFD /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0214C95221A732E2000ACBFD /* Charts.framework */; };
 		02A0B04921A724B400EFCF00 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0B04821A724B400EFCF00 /* StatsViewController.swift */; };
+		02B7179021B4D64B001ABB92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B7178F21B4D64B001ABB92 /* Images.xcassets */; };
 		2E246A0F1F4B2A080015CA71 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E246A0E1F4B2A080015CA71 /* Face.swift */; };
 		2E5C6C421F2F825900749336 /* CIImage+FaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5C6C411F2F825900749336 /* CIImage+FaceDetection.swift */; };
 		2EBDC7101F0FC72F00243609 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC70F1F0FC72F00243609 /* AppDelegate.swift */; };
@@ -18,7 +19,6 @@
 		2EC9AD451F45DA5300784281 /* SCNVector3+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC9AD441F45DA5300784281 /* SCNVector3+Distance.swift */; };
 		2EC9AD471F46EA1300784281 /* SCNNode+Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC9AD461F46EA1300784281 /* SCNNode+Text.swift */; };
 		2EDA02C91F58AE920026EC75 /* faces_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2EDA02C81F58AE8B0026EC75 /* faces_model.mlmodel */; };
-		4713BFDB218A8A3000B858B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4713BFDA218A8A3000B858B4 /* Images.xcassets */; };
 		476EF66A218F945B008BC51F /* StudentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476EF668218F945B008BC51F /* StudentCollectionViewCell.swift */; };
 		476EF66B218F945B008BC51F /* StudentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 476EF669218F945B008BC51F /* StudentCollectionViewCell.xib */; };
 		478AB1932194D3E90095E231 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AB1922194D3E90095E231 /* Student.swift */; };
@@ -47,6 +47,7 @@
 		0214C95221A732E2000ACBFD /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A0B04821A724B400EFCF00 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		02A0B04A21A7262600EFCF00 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		02B7178F21B4D64B001ABB92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		082B4C2416120C827C8E5C0E /* Pods_faceITTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_faceITTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E246A0E1F4B2A080015CA71 /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
 		2E5C6C411F2F825900749336 /* CIImage+FaceDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIImage+FaceDetection.swift"; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		2EC9AD461F46EA1300784281 /* SCNNode+Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNNode+Text.swift"; sourceTree = "<group>"; };
 		2EDA02C81F58AE8B0026EC75 /* faces_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = faces_model.mlmodel; path = faceIT/MLmodels/faces_model.mlmodel; sourceTree = SOURCE_ROOT; };
 		3651E17980590E279CE601DE /* Pods_faceIT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_faceIT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4713BFDA218A8A3000B858B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		476EF668218F945B008BC51F /* StudentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCollectionViewCell.swift; sourceTree = "<group>"; };
 		476EF669218F945B008BC51F /* StudentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentCollectionViewCell.xib; sourceTree = "<group>"; };
 		478AB1922194D3E90095E231 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 				478AB19621955C1E0095E231 /* viewControllers */,
 				2EBDC70F1F0FC72F00243609 /* AppDelegate.swift */,
 				2EBDC71D1F0FC72F00243609 /* Info.plist */,
-				4713BFDA218A8A3000B858B4 /* Images.xcassets */,
+				02B7178F21B4D64B001ABB92 /* Images.xcassets */,
 			);
 			path = faceIT;
 			sourceTree = "<group>";
@@ -321,8 +321,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4713BFDB218A8A3000B858B4 /* Images.xcassets in Resources */,
 				476EF66B218F945B008BC51F /* StudentCollectionViewCell.xib in Resources */,
+				02B7179021B4D64B001ABB92 /* Images.xcassets in Resources */,
 				2EBDC71C1F0FC72F00243609 /* LaunchScreen.storyboard in Resources */,
 				2EBDC7171F0FC72F00243609 /* Main.storyboard in Resources */,
 			);
@@ -567,11 +567,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RZYN73WK53;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = faceIT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dev.attendifyyy;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.attendify.gyao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -591,11 +591,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RZYN73WK53;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = faceIT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = dev.attendifyyy;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.attendify.gyao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

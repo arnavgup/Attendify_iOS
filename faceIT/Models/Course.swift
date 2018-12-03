@@ -155,11 +155,14 @@ class Course {
     print("in newly written functions")
     var result : [String : [Student]] = [:]
     var enrolledStudents:[String : [String:Any]] = self.getphotos(currentDict: getStudentsInfo(currentDict: getEnrollments()))
-    let today = Date()
-    var prevDay = Calendar.current.date(byAdding: .day, value: -5, to: Date())!
+    var today = Date()
+    var prevDay = Calendar.current.date(byAdding: .day, value: -4, to: Date())!
     // For each day in the range of the starting date (ie. prevDay)
+    print("DATE:")
+    print(today)
     while prevDay <= today {
       print("Looping")
+      print(prevDay)
       for (andrew,_) in enrolledStudents {
         let aid = andrew
         let attendance: NSURL = NSURL(string: "https://attendify.herokuapp.com:443/attendances?for_andrew_id=\(aid)&for_class=\(self.courseId)")!
@@ -202,6 +205,8 @@ class Course {
         print(result)
       }
         prevDay = Calendar.current.date(byAdding: .day, value: +1, to: prevDay)!
+        print("NEW DATE")
+        print(prevDay)
     }
     print("outside loop")
     
@@ -265,22 +270,6 @@ class Course {
     }
   
   func getWeeklyAttendance(weekData : [String : [Student]]) -> [String : Int] {
-////      print("In weekly")
-//      let attendances: NSURL = NSURL(string: "https://attendify.herokuapp.com:443/attendances?for_class=\(courseId)")!
-//      let eattendanceData = NSData(contentsOf: attendances as URL)!
-//      let response = try! JSON(data: eattendanceData as Data)
-//      var weekOfDate : [String : [String]] = [String : [String]]()
-////      print(response)
-//      for anAttendance in response {
-//        let andrew = anAttendance.1["andrew_id"].string ?? ""
-//        let date = anAttendance.1["date"].string ?? ""
-//        let status = anAttendance.1["attendance_type"].string ?? ""
-//        if (status == "Present") {
-//          var prevPresent = weekOfDate[date] ?? []
-//          prevPresent.append(andrew)
-//          weekOfDate[date] = prevPresent
-//        }
-//      }
       var weekOfData = weekData // self.getWeekAttendances()
       for day in weekOfData {
         let presentOnly = day.value.filter { $0.status == "Present"}
@@ -302,9 +291,15 @@ class Course {
   
     func calcWeekAverage(weeklyAttendance : [String : Int]) -> String {
       let weeklyAttendance = weeklyAttendance // self.getWeeklyAttendance()
-      return String(Double(weeklyAttendance.reduce(0, { x, y in
+      let avgResult = Double(weeklyAttendance.reduce(0, { x, y in
         x + y.value
-      })) / Double(weeklyAttendance.count))
+      })) / Double(weeklyAttendance.count)
+      if (!avgResult.isNaN) {
+        return String(avgResult)
+      } else {
+        return "0"
+      }
+
     }
   
     func calcWeekMax(weeklyAttendance : [String : Int]) -> (String,String) {
@@ -312,7 +307,10 @@ class Course {
       let maxAttendance = String(weeklyAttendance.reduce(Int.min, { x, y in
         max(x,y.value)}))
       let date = (weeklyAttendance as NSDictionary).allKeys(for: Int(maxAttendance)) as! [String]
-      return (date[0], maxAttendance)
+      if (date.count != 0) {
+        return (date[0], maxAttendance)
+      }
+      return ("0","0")
     }
   
   
@@ -321,8 +319,11 @@ class Course {
       let minAttendance = String(weeklyAttendance.reduce(Int.max, { x, y in
         min(x,y.value)}))
       let date = (weeklyAttendance as NSDictionary).allKeys(for: Int(minAttendance)) as! [String]
-      return (date[0], minAttendance)
-  }
+      if (date.count != 0) {
+        return (date[0], minAttendance)
+      }
+      return ("0","0")
+    }
   
   
 }
