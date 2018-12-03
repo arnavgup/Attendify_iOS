@@ -64,16 +64,11 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
         // Do any additional setup after loading the view.
       print("Updating")
       weekOfData = course.getWeeklyAttendance(weekData: weekOfAttendance)
+      print(weekOfData)
       weekDataAvg = course.calcWeekAverage(weeklyAttendance: weekOfData)
       weekDataToday = course.calcToday(weeklyAttendance: weekOfData)
       weekDataMax = course.calcWeekMax(weeklyAttendance: weekOfData)
       weekDataMin = course.calcWeekMin(weeklyAttendance: weekOfData)
-      print("Updated")
-      print(weekDataAvg)
-      print(weekDataToday)
-      print(weekDataMax)
-      print(weekDataMin)
-      print(weekOfData)
   }
     
     func download(destinationFileUrl: URL, completionBlock: @escaping (String) -> Void) {
@@ -107,6 +102,9 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
   @IBAction func changeCourse(_ sender: AnyObject) {
     print("Button tap leads to function call")
     let allCourses = course.getCourses()
+    if allCourses.count <= 1 {
+      self.view.makeToast("Cannot change course \(allCourses[courseIndex].0)", duration: 1.0, position: .center)
+    }
     courseIndex += 1
     if (courseIndex > allCourses.count - 1) {
       courseIndex = 0
@@ -114,5 +112,6 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     courseId = allCourses[courseIndex].1
     course = Course.init(courseId: courseId)
     sender.setTitle(allCourses[courseIndex].0, for: .normal)
+    self.view.makeToast("Course is set to \(allCourses[courseIndex].0)", duration: 1.0, position: .center)
   }
 }

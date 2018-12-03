@@ -6,16 +6,190 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "faceIT/viewControllers/HomeViewController.swift"
-            timestampString = "565294824.435367"
+            timestampString = "565508911.23473"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "changeCourse(_:)"
+            startingLineNumber = "118"
+            endingLineNumber = "118">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "faceIT/viewControllers/StatsViewController.swift"
+            timestampString = "565508911.234885"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "switchDataMetric(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "faceIT/viewControllers/HomeViewController.swift"
+            timestampString = "565508911.2350349"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "faceIT/viewControllers/HomeViewController.swift"
+            timestampString = "565508911.235129"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "faceIT/Models/Course.swift"
+            timestampString = "565508911.235208"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "calcWeekAverage(weeklyAttendance:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "faceIT/Models/Course.swift"
+            timestampString = "565508911.2352819"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "calcWeekAverage(weeklyAttendance:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "faceIT.Course.calcWeekAverage(weeklyAttendance: Swift.Dictionary&lt;Swift.String, Swift.Int&gt;) -&gt; Swift.String"
+                  moduleName = "faceIT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gyao/Documents/School%20Work/Senior%20Year/Semester%20One/67-442/Attendify_iOS/faceIT/Models/Course.swift"
+                  timestampString = "565508694.622264"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "296"
+                  endingLineNumber = "296"
+                  offsetFromSymbolStart = "263">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, (key: Swift.String, value: Swift.Int)) -&gt; Swift.Int in faceIT.Course.calcWeekAverage(weeklyAttendance: Swift.Dictionary&lt;Swift.String, Swift.Int&gt;) -&gt; Swift.String"
+                  moduleName = "faceIT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gyao/Documents/School%20Work/Senior%20Year/Semester%20One/67-442/Attendify_iOS/faceIT/Models/Course.swift"
+                  timestampString = "565508694.62384"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "296"
+                  endingLineNumber = "296"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "faceIT/Models/Course.swift"
+            timestampString = "565508911.235365"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
+            landmarkName = "calcWeekAverage(weeklyAttendance:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "faceIT.Course.calcWeekAverage(weeklyAttendance: Swift.Dictionary&lt;Swift.String, Swift.Int&gt;) -&gt; Swift.String"
+                  moduleName = "faceIT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gyao/Documents/School%20Work/Senior%20Year/Semester%20One/67-442/Attendify_iOS/faceIT/Models/Course.swift"
+                  timestampString = "565508702.3178819"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "294"
+                  endingLineNumber = "294"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, (key: Swift.String, value: Swift.Int)) -&gt; Swift.Int in faceIT.Course.calcWeekAverage(weeklyAttendance: Swift.Dictionary&lt;Swift.String, Swift.Int&gt;) -&gt; Swift.String"
+                  moduleName = "faceIT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gyao/Documents/School%20Work/Senior%20Year/Semester%20One/67-442/Attendify_iOS/faceIT/Models/Course.swift"
+                  timestampString = "565508702.32032"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "295"
+                  endingLineNumber = "295"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "faceIT/Models/Course.swift"
+            timestampString = "565508911.235432"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "calcWeekAverage(weeklyAttendance:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
