@@ -27,8 +27,6 @@ var weekDataMax : (String, String) = ("","")
 var weekDataMin : (String, String) = ("","")
 
 class HomeViewController: UIViewController, ARSCNViewDelegate {
-//    var mlmodel = Faces_v4().model
-//    var model: VNCoreMLModel = try! VNCoreMLModel(for: Faces_v4().model)
     var courseIndex = 0
 
     @IBOutlet var startAttendanceButton: UIButton!
@@ -103,7 +101,7 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     print("Button tap leads to function call")
     let allCourses = course.getCourses()
     if allCourses.count <= 1 {
-      self.view.makeToast("Cannot change course \(allCourses[courseIndex].0)", duration: 1.0, position: .center)
+      self.view.makeToast("Only one course available", duration: 1.0, position: .center)
     }
     courseIndex += 1
     if (courseIndex > allCourses.count - 1) {
@@ -112,6 +110,8 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     courseId = allCourses[courseIndex].1
     course = Course.init(courseId: courseId)
     sender.setTitle(allCourses[courseIndex].0, for: .normal)
-    self.view.makeToast("Course is set to \(allCourses[courseIndex].0)", duration: 1.0, position: .center)
+    if allCourses.count > 1 {
+        self.view.makeToast("Course is set to \(allCourses[courseIndex].0)", duration: 1.0, position: .center)
+    }
   }
 }

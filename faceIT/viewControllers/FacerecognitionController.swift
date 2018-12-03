@@ -87,11 +87,11 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if(todayAttendance[indexPath.row].status == "Present"){
-            todayAttendance[indexPath.row].status = "Absent"
+        if(attendance[indexPath.row].status == "Present"){
+            attendance[indexPath.row].status = "Absent"
         }
         else{
-            todayAttendance[indexPath.row].status = "Present"
+            attendance[indexPath.row].status = "Present"
         }
         Async.main{
             self.tableview.reloadData()
@@ -103,7 +103,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todayAttendance.count
+        return attendance.count
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -111,9 +111,9 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if (todayAttendance[indexPath.row].status == "Present" || todayAttendance[indexPath.row].status == "Optional(Present)")
+        if (attendance[indexPath.row].status == "Present" || attendance[indexPath.row].status == "Optional(Present)")
         {
-            todayAttendance[indexPath.row].status = "Present"
+            attendance[indexPath.row].status = "Present"
             cell.backgroundColor = UIColor(red: 0.8549, green: 0.9686, blue: 0.6863, alpha: 1.0)
 
         }
@@ -138,14 +138,14 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
         }
 
         do {
-            let url = URL(string: (todayAttendance[indexPath.row].picture))!
+            let url = URL(string: (attendance[indexPath.row].picture))!
             let data = try Data(contentsOf: url)
             cell.picture.image = UIImage(data: data)
         }
         catch{
             print(error)
         }
-        cell.andrewId.text = todayAttendance[indexPath.row].andrew
+        cell.andrewId.text = attendance[indexPath.row].andrew
         return cell
     }
     
@@ -157,8 +157,8 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     
     func refreshLabels(){
         Async.main {
-            self.numPresent.text = "\(todayAttendance.reduce(0){$1.status == "Present" ? $0+1 : $0})"
-            self.numAbsent.text = "\(todayAttendance.reduce(0){$1.status == "Absent" ? $0+1 : $0})"
+            self.numPresent.text = "\(self.attendance.reduce(0){$1.status == "Present" ? $0+1 : $0})"
+            self.numAbsent.text = "\(self.attendance.reduce(0){$1.status == "Absent" ? $0+1 : $0})"
         }
     }
     
@@ -298,7 +298,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
         // Create new face
         guard let existentFace = results.first else {
             
-            for student in todayAttendance{
+            for student in attendance{
                 if (student.andrew == name && person.confidence > 0.6){person_name = student.name}
             }
             
@@ -319,7 +319,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
             self.faces.append(face)
 
             
-            for s in todayAttendance{
+            for s in attendance{
                 if(s.andrew == name)
                 {
                    s.status = "Present"
@@ -382,12 +382,10 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func submit_attendance(sender: UIButton){
-        print("================FINAL ATTENDANCE======================")
-        for student in todayAttendance{
+        for student in attendance{
             print(student.name, student.status)
         }
-        print("======================================")
-        course.updateAttendance(enrolledStudents: todayAttendance)
+        course.updateAttendance(enrolledStudents: attendance)
         weekOfAttendance = course.getWeekAttendances()
         weekOfAttendanceCount = course.getWeeklyAttendance(weekData: weekOfAttendance)
     }

@@ -79,13 +79,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Simply scan the class using your camera and the app would mark the students using AR facial recognition" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiO-vb-hVA">
-                                <rect key="frame" x="21" y="135" width="332" height="191"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Student list (Tap to mark)" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTI-ne-c00">
                                 <rect key="frame" x="9" y="563" width="122" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -93,6 +86,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="110455-201" translatesAutoresizingMaskIntoConstraints="NO" id="QaV-Mm-9HF">
+                                <rect key="frame" x="274" y="698" width="87" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.25866326689720154" green="0.65608257055282593" blue="0.64961069822311401" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -104,7 +101,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Th6-nt-aYT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="left" id="Plg-qD-72z">
                     <connections>
-                        <segue destination="TzA-2B-JQI" kind="show" id="km1-MC-mDm"/>
+                        <segue destination="TzA-2B-JQI" kind="modal" id="km1-MC-mDm"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
@@ -180,8 +177,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="110455-201" translatesAutoresizingMaskIntoConstraints="NO" id="Z1g-BC-EbY">
+                                <rect key="frame" x="288" y="700" width="87" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="110455-200" translatesAutoresizingMaskIntoConstraints="NO" id="cv1-NC-X3s">
+                                <rect key="frame" x="21" y="700" width="87" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.30761393904685974" green="0.17713075876235962" blue="0.32038271427154541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.89998634246759524" green="0.5162728663921714" blue="0.94415884067357514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="mTh-EJ-IYY" appends="YES" id="RxN-x3-mMa"/>
@@ -249,8 +254,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="110455-201" translatesAutoresizingMaskIntoConstraints="NO" id="gZ6-VK-wO9">
+                                <rect key="frame" x="288" y="702" width="87" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="110455-200" translatesAutoresizingMaskIntoConstraints="NO" id="0ir-tg-p1h">
+                                <rect key="frame" x="23" y="702" width="87" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.307613939" green="0.17713075880000001" blue="0.32038271429999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.89626872539520264" green="0.51548868417739868" blue="0.94636005163192749" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="trb-nK-G5t" appends="YES" id="0Do-o7-F7A"/>
@@ -349,8 +362,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="110455-200" translatesAutoresizingMaskIntoConstraints="NO" id="PH8-2t-Kxk">
+                                <rect key="frame" x="16" y="705" width="87" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.99953705069999998" green="0.33112558720000002" blue="0.39510887859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.89291464137357512" green="0.81165043291981653" blue="0.51534264944141484" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="RFr-70-fmY" appends="YES" id="lDU-v5-jJi"/>
@@ -638,26 +655,26 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axa-sb-1sq">
-                                <rect key="frame" x="191" y="351" width="156" height="131"/>
+                                <rect key="frame" x="194" y="355" width="173" height="123"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99863892793655396" green="0.30176077887307912" blue="0.33548297472585581" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="60"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="55"/>
                                 <state key="normal" title="0">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GbU-iE-WUX">
-                                <rect key="frame" x="23" y="355" width="153" height="123"/>
+                                <rect key="frame" x="7" y="355" width="179" height="123"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="60"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="55"/>
                                 <state key="normal" title="0" backgroundImage="Screen Shot 2018-11-28 at 3.47.48 PM">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1o-Lc-i35">
-                                <rect key="frame" x="187" y="525" width="164" height="123"/>
+                                <rect key="frame" x="194" y="525" width="173" height="123"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="60"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="55"/>
                                 <state key="normal" title="0" backgroundImage="Screen Shot 2018-11-28 at 3.47.56 PM">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -713,9 +730,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfK-Ph-gdv">
-                                <rect key="frame" x="23" y="525" width="153" height="123"/>
+                                <rect key="frame" x="7" y="525" width="179" height="123"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="60"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="55"/>
                                 <state key="normal" title="0" backgroundImage="Screen Shot 2018-10-31 at 9.10.16 PM">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -744,28 +761,28 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Metric" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR7-WK-zWx">
-                                <rect key="frame" x="36" y="457" width="131" height="21"/>
+                                <rect key="frame" x="36" y="452" width="131" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Metric" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLt-gT-zp0">
-                                <rect key="frame" x="203" y="456" width="131" height="21"/>
+                                <rect key="frame" x="203" y="453" width="131" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Metric" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2n-dP-wXL">
-                                <rect key="frame" x="34" y="627" width="131" height="21"/>
+                                <rect key="frame" x="34" y="623" width="131" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Metric" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTU-qC-qVZ">
-                                <rect key="frame" x="204" y="627" width="131" height="21"/>
+                                <rect key="frame" x="204" y="623" width="131" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -783,6 +800,8 @@
                         <outlet property="highestCardMetric" destination="Q2n-dP-wXL" id="aIR-au-Cz6"/>
                         <outlet property="lowestCard" destination="n1o-Lc-i35" id="oYp-C7-azt"/>
                         <outlet property="lowestCardMetric" destination="BTU-qC-qVZ" id="cfb-T0-iEr"/>
+                        <outlet property="returnButton" destination="ClE-jL-80w" id="Yly-UL-kLR"/>
+                        <outlet property="showButton" destination="25S-YD-q7a" id="Yms-QU-Lo9"/>
                         <outlet property="todayCard" destination="GbU-iE-WUX" id="7Pu-s7-JxC"/>
                         <outlet property="todayCardMetric" destination="fR7-WK-zWx" id="o94-B4-QQQ"/>
                     </connections>
@@ -895,6 +914,8 @@
                     <connections>
                         <outlet property="date" destination="a8X-yH-6eG" id="oVN-Q4-gQS"/>
                         <outlet property="filter" destination="1UK-CL-ezn" id="bcF-n4-0cu"/>
+                        <outlet property="markButton" destination="aXW-R2-3Ai" id="3Q5-wu-Qoj"/>
+                        <outlet property="returnButton" destination="VcS-Ig-jie" id="KFC-xT-4iM"/>
                         <outlet property="tableview" destination="TD8-aT-xHH" id="qZA-tx-A1a"/>
                     </connections>
                 </viewController>
@@ -904,6 +925,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="110455-200" width="200" height="200"/>
+        <image name="110455-201" width="200" height="200"/>
         <image name="Screen Shot 2018-10-31 at 9.10.16 PM" width="336" height="263"/>
         <image name="Screen Shot 2018-11-28 at 3.40.02 PM" width="215" height="205"/>
         <image name="Screen Shot 2018-11-28 at 3.47.48 PM" width="131" height="133"/>
@@ -918,9 +941,9 @@
         <image name="logo" width="298.5" height="277"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s8f-lf-4Cb"/>
-        <segue reference="f6g-DP-PUT"/>
-        <segue reference="km1-MC-mDm"/>
-        <segue reference="lsu-d1-E6a"/>
+        <segue reference="Rne-Vz-iRd"/>
+        <segue reference="Kem-JU-vD2"/>
+        <segue reference="sxg-hh-gnJ"/>
+        <segue reference="pnv-tE-jpp"/>
     </inferredMetricsTieBreakers>
 </document>
