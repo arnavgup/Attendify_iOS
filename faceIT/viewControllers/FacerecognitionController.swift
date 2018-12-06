@@ -35,6 +35,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
             if( student.status == "Optional(Present)"){student.status = "Present"}
             if( student.status == "Optional(Absent)"){student.status = "Absent"}
         }
+        self.refreshLabels()
         
         //rounded corners
         sceneView.delegate = self
@@ -327,7 +328,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
                     Async.main{
                         let url = URL(string: (s.picture))!
                         let data = try! Data(contentsOf: url)
-                        self.view.makeToast("\(s.name) was marked for attendance", duration: 1.5, position: .center, image: UIImage(data: data))
+                        self.view.makeToast("\(s.name) was marked for attendance", duration: 1.5, position: .top)
                         self.tableview.reloadData()
                         self.refreshLabels()
                     }
