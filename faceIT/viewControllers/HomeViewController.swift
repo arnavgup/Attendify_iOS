@@ -1,8 +1,8 @@
 //
 //  HomeViewController.swift
 //  faceIT
-//
-//  Created by Arnav Gupta on 11/9/18.
+//  Updated by George Gupta
+//  Last update: December 6th, 2018
 
 import UIKit
 import SceneKit
@@ -15,11 +15,11 @@ import Async
 import PKHUD
 import Toast_Swift
 
-var course = Course.init(courseId: 1)
 var courseId = 1
+var course = Course.init(courseId: courseId)
 var todayAttendance: [Student] = course.getStudents().sorted(by: { $0.name > $1.name })
 var weekOfAttendance: [String : [Student]] = course.getWeekAttendances() // KEY
-var weekOfData : [String : Int] = [:] // course.getWeeklyAttendance(weekData: weekOfAttendance)
+var weekOfData : [String : Int] = [:] // course.getWeeklyPresentCount(weekData: weekOfAttendance)
 var weekDataAvg : String = ""
 var weekDataToday  : String = ""
 var weekDataMax : (String, String) = ("","")
@@ -34,7 +34,6 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var manualAddButton: UIButton!
     @IBOutlet var downloadStatus: UILabel!
     @IBOutlet var activityView: UIActivityIndicatorView!
-//    @IBOutlet var barButtonItem: UIBarButtonItem!
     @IBOutlet var sceneView: ARSCNView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,20 +50,19 @@ class HomeViewController: UIViewController, ARSCNViewDelegate {
         self.downloadStatus.text = modelStatus
         self.startAttendanceButton.layer.cornerRadius = 10
         self.startAttendanceButton.layer.masksToBounds = true
-//        self.startAttendanceButton.isEnabled = false
         self.statsButton.layer.cornerRadius = 10
         self.statsButton.layer.masksToBounds = true
         self.courseButton.layer.cornerRadius = 10
         self.courseButton.layer.masksToBounds = true
         self.manualAddButton.layer.cornerRadius = 10
         self.manualAddButton.layer.masksToBounds = true
+      
         // Do any additional setup after loading the view.
-      print("Updating")
-      weekOfData = course.getWeeklyAttendance(weekData: weekOfAttendance)
-      weekDataAvg = course.calcWeekAverage(weeklyAttendance: weekOfData)
-      weekDataToday = course.calcToday(weeklyAttendance: weekOfData)
-      weekDataMax = course.calcWeekMax(weeklyAttendance: weekOfData)
-      weekDataMin = course.calcWeekMin(weeklyAttendance: weekOfData)
+        weekOfData = course.getWeeklyPresentCount(weekData: weekOfAttendance)
+        weekDataAvg = course.calcWeekAverage(weeklyPresentCount: weekOfData)
+        weekDataToday = course.calcToday(weeklyPresentCount: weekOfData)
+        weekDataMax = course.calcWeekMax(weeklyPresentCount: weekOfData)
+        weekDataMin = course.calcWeekMin(weeklyPresentCount: weekOfData)
   }
     
     func download(destinationFileUrl: URL, completionBlock: @escaping (String) -> Void) {

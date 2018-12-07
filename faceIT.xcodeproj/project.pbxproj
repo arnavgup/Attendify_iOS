@@ -10,6 +10,7 @@
 		0214C95321A732E2000ACBFD /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0214C95221A732E2000ACBFD /* Charts.framework */; };
 		02A0B04921A724B400EFCF00 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A0B04821A724B400EFCF00 /* StatsViewController.swift */; };
 		02B7179021B4D64B001ABB92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02B7178F21B4D64B001ABB92 /* Images.xcassets */; };
+		02E77A2621BA0C51000677C1 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E77A2521BA0C51000677C1 /* SwiftyJSON.framework */; };
 		2E246A0F1F4B2A080015CA71 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E246A0E1F4B2A080015CA71 /* Face.swift */; };
 		2E5C6C421F2F825900749336 /* CIImage+FaceDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5C6C411F2F825900749336 /* CIImage+FaceDetection.swift */; };
 		2EBDC7101F0FC72F00243609 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBDC70F1F0FC72F00243609 /* AppDelegate.swift */; };
@@ -24,7 +25,7 @@
 		478AB1932194D3E90095E231 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AB1922194D3E90095E231 /* Student.swift */; };
 		478AB19521955BD60095E231 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AB19421955BD60095E231 /* HomeViewController.swift */; };
 		478AB19E219563FA0095E231 /* AttendifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AB19D219563FA0095E231 /* AttendifyTests.swift */; };
-		478AB1AB219571F30095E231 /* PasrRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AB1AA219571F30095E231 /* PasrRecordsViewController.swift */; };
+		478AB1AB219571F30095E231 /* PastRecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AB1AA219571F30095E231 /* PastRecordsViewController.swift */; };
 		478AB1AD2195FAEE0095E231 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AB1AC2195FAEE0095E231 /* Course.swift */; };
 		478AB1B02195FE9D0095E231 /* StudentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478AB1AF2195FE9D0095E231 /* StudentTests.swift */; };
 		478AB1B221961E550095E231 /* Faces_v4.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 478AB1B121961E550095E231 /* Faces_v4.mlmodel */; };
@@ -48,6 +49,7 @@
 		02A0B04821A724B400EFCF00 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		02A0B04A21A7262600EFCF00 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02B7178F21B4D64B001ABB92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		02E77A2521BA0C51000677C1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		082B4C2416120C827C8E5C0E /* Pods_faceITTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_faceITTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E246A0E1F4B2A080015CA71 /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
 		2E5C6C411F2F825900749336 /* CIImage+FaceDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CIImage+FaceDetection.swift"; sourceTree = "<group>"; };
@@ -68,7 +70,7 @@
 		478AB19B219563FA0095E231 /* AttendifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AttendifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		478AB19D219563FA0095E231 /* AttendifyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendifyTests.swift; sourceTree = "<group>"; };
 		478AB19F219563FA0095E231 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		478AB1AA219571F30095E231 /* PasrRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasrRecordsViewController.swift; sourceTree = "<group>"; };
+		478AB1AA219571F30095E231 /* PastRecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRecordsViewController.swift; sourceTree = "<group>"; };
 		478AB1AC2195FAEE0095E231 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		478AB1AF2195FE9D0095E231 /* StudentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTests.swift; sourceTree = "<group>"; };
 		478AB1B121961E550095E231 /* Faces_v4.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Faces_v4.mlmodel; sourceTree = SOURCE_ROOT; };
@@ -84,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E77A2621BA0C51000677C1 /* SwiftyJSON.framework in Frameworks */,
 				4791330521AF2D8900760537 /* Toast_Swift.framework in Frameworks */,
 				0214C95321A732E2000ACBFD /* Charts.framework in Frameworks */,
 				E67BA293D563E2B1B6C08603 /* Pods_faceIT.framework in Frameworks */,
@@ -112,6 +115,7 @@
 		1BF18757F9DB2C7957A0D757 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02E77A2521BA0C51000677C1 /* SwiftyJSON.framework */,
 				4791330421AF2D8900760537 /* Toast_Swift.framework */,
 				0214C95221A732E2000ACBFD /* Charts.framework */,
 				02A0B04A21A7262600EFCF00 /* Charts.framework */,
@@ -162,7 +166,7 @@
 		478AB19621955C1E0095E231 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				478AB1AA219571F30095E231 /* PasrRecordsViewController.swift */,
+				478AB1AA219571F30095E231 /* PastRecordsViewController.swift */,
 				478AB19421955BD60095E231 /* HomeViewController.swift */,
 				2EBDC7131F0FC72F00243609 /* FacerecognitionController.swift */,
 				02A0B04821A724B400EFCF00 /* StatsViewController.swift */,
@@ -395,7 +399,7 @@
 			files = (
 				478AB1AD2195FAEE0095E231 /* Course.swift in Sources */,
 				2E246A0F1F4B2A080015CA71 /* Face.swift in Sources */,
-				478AB1AB219571F30095E231 /* PasrRecordsViewController.swift in Sources */,
+				478AB1AB219571F30095E231 /* PastRecordsViewController.swift in Sources */,
 				2EC9AD451F45DA5300784281 /* SCNVector3+Distance.swift in Sources */,
 				02A0B04921A724B400EFCF00 /* StatsViewController.swift in Sources */,
 				2EC9AD471F46EA1300784281 /* SCNNode+Text.swift in Sources */,

@@ -1,10 +1,8 @@
 //
 //  StatsViewController.swift
 //  faceIT
-//
-//  Created by George Yao on 11/22/18.
-//  Copyright © 2018 NovaTec GmbH. All rights reserved.
-//
+//  Updated by George Yao
+//  Last update: December 6th, 2018
 
 import UIKit
 import Charts
@@ -12,6 +10,7 @@ import Charts
 
 class StatsViewController: UIViewController{
   
+  // MARK: - UI buttons and graph chart
   @IBOutlet weak var averageCard: UIButton!
   @IBOutlet weak var todayCard: UIButton!
   @IBOutlet weak var highestCard: UIButton!
@@ -21,16 +20,15 @@ class StatsViewController: UIViewController{
   @IBOutlet weak var highestCardMetric: UILabel!
   @IBOutlet weak var lowestCardMetric: UILabel!
   @IBOutlet weak var changeMetric: UIButton!
-    @IBOutlet weak var showButton:UIButton!
-    @IBOutlet weak var returnButton:UIButton!
+  @IBOutlet weak var showButton:UIButton!
+  @IBOutlet weak var returnButton:UIButton!
   @IBOutlet weak var barChart: BarChartView!
   weak var axisFormatDelegate: IAxisValueFormatter?
   let yformatter = NumberFormatter()
+  var state: Bool = false // Switch to change to % or count
+  var days: [String]! // Holds the days for the current week
   
-  
-  var state: Bool = false
-  var days: [String]!
-  
+  // MARK: - On load, get x (dates) and y (attendance counts) to generate graph and stats
   override func viewDidLoad() {
     super.viewDidLoad()
     axisFormatDelegate = self
@@ -45,9 +43,6 @@ class StatsViewController: UIViewController{
     let x = days
     days = x?.sorted()
     let attendanceCount = weekData.sorted(by: { $0.0 < $1.0 }).map( { Double($0.1) })
-    print("CHECK HERE!!!")
-    print(days)
-    print(attendanceCount)
     averageCard.setTitle(weekDataAvg, for: .normal)
     averageCardMetric.text = "Students"
     todayCard.setTitle(weekDataToday, for: .normal)
@@ -64,6 +59,7 @@ class StatsViewController: UIViewController{
     super.didReceiveMemoryWarning()
   }
   
+  // MARK: - Sets up chart
   func setup(chartView: BarChartView) {
     chartView.leftAxis.axisMinimum = 0
     chartView.leftAxis.axisMaximum = Double(weekDataMax.1)!
