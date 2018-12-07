@@ -6,11 +6,11 @@
 
 import UIKit
 
-class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PastRecordsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableview: UITableView!
     @IBOutlet var filter: UISegmentedControl!
-    @IBOutlet var date: UIDatePicker!
+    @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet weak var markButton:UIButton!
     @IBOutlet weak var returnButton:UIButton!
     
@@ -104,10 +104,10 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func datePickerChanged(_ sender: Any) {
-        date.datePickerMode = UIDatePickerMode.date
+        datePicker.datePickerMode = UIDatePickerMode.date
         var dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        var selectedDate = dateFormatter.string(from: date.date)
+        var selectedDate = dateFormatter.string(from: datePicker.date)
         print(selectedDate)
         for (day, at) in weekOfAttendance{
             print(at)
@@ -122,6 +122,17 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
             student.status = "Present"
         }
         self.tableview.reloadData()
+    }
+    
+    @IBAction func submit_attendance(sender: UIButton){
+        for student in attendance{
+            print(student.name, student.status)
+        }
+        course.updateAttendance(enrolledStudents: attendance, dateOfAttendance: self.datePicker.date)
+        weekOfAttendance = course.getWeekAttendances()
+        weekOfData = course.getWeeklyPresentCount(weekData: weekOfAttendance)
+        todayAttendance = course.getStudents().sorted(by: { $0.name > $1.name })
+        attendance = todayAttendance
     }
 
 }
