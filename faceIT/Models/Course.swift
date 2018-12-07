@@ -304,7 +304,7 @@ class Course {
    
      - Returns: Void
      */
-    func updateAttendance(enrolledStudents: [Student]) -> () {
+    func updateAttendance(enrolledStudents: [Student], dateOfAttendance: Date) -> () {
         for student in enrolledStudents {
             let status = student.status
             var request:URLRequest
@@ -317,7 +317,7 @@ class Course {
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
                 request.httpMethod = "POST"
-                dict = ["andrew_id": student.andrew, "date": "\(Date())", "course_id": student.course_id, "attendance_type": status]
+                dict = ["andrew_id": student.andrew, "date": "\(dateOfAttendance)", "course_id": student.course_id, "attendance_type": status]
             }
             else {
                 // Otherwise, update an existing record with a PATCH request
@@ -326,9 +326,9 @@ class Course {
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
                 request.httpMethod = "PATCH"
-                dict = ["id": student.attendance_id,"andrew_id": student.andrew, "date": "\(Date())", "course_id": student.course_id, "attendance_type": status]
+                dict = ["id": student.attendance_id,"andrew_id": student.andrew, "date": "\(dateOfAttendance)", "course_id": student.course_id, "attendance_type": status]
             }
-//          print(student.andrew + ": " + request.httpMethod!)
+          print(student.andrew + ": " + request.httpMethod!)
             let jsonData = try! JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
             request.httpBody = jsonData
             let task = URLSession.shared.dataTask(with: request) { data, response, error in

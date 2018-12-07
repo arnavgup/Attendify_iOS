@@ -810,10 +810,10 @@
             </objects>
             <point key="canvasLocation" x="1445.5999999999999" y="-72.413793103448285"/>
         </scene>
-        <!--Pasr Records View Controller-->
+        <!--Past Records View Controller-->
         <scene sceneID="CX7-aH-eIe">
             <objects>
-                <viewController id="e8f-rm-SkN" customClass="PasrRecordsViewController" customModule="faceIT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="e8f-rm-SkN" customClass="PastRecordsViewController" customModule="faceIT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IfL-6j-lDe"/>
                         <viewControllerLayoutGuide type="bottom" id="YA2-uK-EmE"/>
@@ -905,6 +905,7 @@
                                 </state>
                                 <connections>
                                     <action selector="submit_attendanceWithSender:" destination="OiB-f5-J2X" eventType="touchDown" id="FsD-mF-euF"/>
+                                    <action selector="submit_attendanceWithSender:" destination="e8f-rm-SkN" eventType="touchDown" id="Zu2-W8-KnG"/>
                                     <segue destination="yyZ-oC-a77" kind="show" id="Dp5-KK-km8"/>
                                 </connections>
                             </button>
@@ -912,7 +913,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
-                        <outlet property="date" destination="a8X-yH-6eG" id="oVN-Q4-gQS"/>
+                        <outlet property="datePicker" destination="a8X-yH-6eG" id="AFl-pJ-uQm"/>
                         <outlet property="filter" destination="1UK-CL-ezn" id="bcF-n4-0cu"/>
                         <outlet property="markButton" destination="aXW-R2-3Ai" id="3Q5-wu-Qoj"/>
                         <outlet property="returnButton" destination="VcS-Ig-jie" id="KFC-xT-4iM"/>
@@ -941,7 +942,7 @@
         <image name="logo" width="298.5" height="277"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c0O-oO-1Su"/>
+        <segue reference="Dp5-KK-km8"/>
         <segue reference="f6g-DP-PUT"/>
         <segue reference="sxg-hh-gnJ"/>
         <segue reference="pnv-tE-jpp"/>

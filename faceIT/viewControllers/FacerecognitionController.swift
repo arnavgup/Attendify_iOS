@@ -388,8 +388,9 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
         for student in attendance{
             print(student.name, student.status)
         }
-        course.updateAttendance(enrolledStudents: attendance)
+        course.updateAttendance(enrolledStudents: attendance, dateOfAttendance: Date())
         weekOfAttendance = course.getWeekAttendances()
+        todayAttendance = course.getStudents().sorted(by: { $0.name > $1.name })
         weekOfData = course.getWeeklyPresentCount(weekData: weekOfAttendance)
     }
     
