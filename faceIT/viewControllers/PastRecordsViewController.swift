@@ -1,10 +1,8 @@
 //
 //  PasrRecordsViewController.swift
 //  faceIT
-//
-//  Created by Arnav Gupta on 11/9/18.
-//  Copyright © 2018 NovaTec GmbH. All rights reserved.
-//
+//  Updated by Arnav Gupta
+//  Last updated: December 6th, 2018
 
 import UIKit
 
@@ -25,8 +23,7 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
         self.returnButton.layer.masksToBounds = true
         attendance.sort(by: { $0.andrew > $1.andrew })
         for student in attendance{
-            if( student.status == "Optional(Present)"){student.status = "Present"}
-            if( student.status == "Optional(Absent)"){student.status = "Absent"}
+          print(student)
         }
 
         // Do any additional setup after loading the view.
@@ -115,7 +112,6 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
         for (day, at) in weekOfAttendance{
             print(at)
             if(day == selectedDate){attendance = at}
-//            else{attendance = []}
         }
         print(attendance)
         self.tableview.reloadData()
@@ -127,15 +123,5 @@ class PasrRecordsViewController: UIViewController, UITableViewDelegate, UITableV
         }
         self.tableview.reloadData()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

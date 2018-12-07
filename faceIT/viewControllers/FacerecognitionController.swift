@@ -1,6 +1,8 @@
 //
 //  FacerecognitionController.swift
 //  faceIT
+//  Updated by Arnav Gupta
+//  Last update: December 6th, 2018
 
 import UIKit
 import SceneKit
@@ -388,7 +390,7 @@ class FacerecognitionController: UIViewController, UITableViewDataSource, UITabl
         }
         course.updateAttendance(enrolledStudents: attendance)
         weekOfAttendance = course.getWeekAttendances()
-        weekOfData = course.getWeeklyAttendance(weekData: weekOfAttendance)
+        weekOfData = course.getWeeklyPresentCount(weekData: weekOfAttendance)
     }
     
     /// Determine the vector from the position on the screen.
