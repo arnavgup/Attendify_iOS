@@ -144,7 +144,7 @@ The Flask web app houses the registration from, and trains a ResNet-50 model usi
 ```
 $ cd AttendifySite(Flask)
 $ ls
-Attendify V11.zip Dockerfile        app               env
+Dockerfile        app               env
 ```
 It is recommended to use the virtual environment we set up:
 ```
