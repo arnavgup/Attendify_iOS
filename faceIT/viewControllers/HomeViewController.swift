@@ -1,7 +1,7 @@
 //
 //  HomeViewController.swift
 //  faceIT
-//  Updated by George Gupta
+//  Updated by George Yao
 //  Last update: December 6th, 2018
 
 import UIKit
