@@ -1,0 +1,146 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://attendify.herokuapp.com",
+  "resourcePath": "professors",
+  "apis": [
+    {
+      "path": "/professors.json",
+      "operations": [
+        {
+          "summary": "Fetches all professors",
+          "notes": "This lists all the professors",
+          "nickname": "Professors#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/professors.json",
+      "operations": [
+        {
+          "summary": "Creates a new professor",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "email",
+              "type": "string",
+              "description": "E-mail, should be a cmu email",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "first_name",
+              "type": "string",
+              "description": "First Name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "last_name",
+              "type": "string",
+              "description": "Last Name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "password",
+              "type": "string",
+              "description": "password",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Professors#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/professors/{id}.json",
+      "operations": [
+        {
+          "summary": "Shows one professor",
+          "notes": "This lists details of one professor",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "professor ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Professors#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/professors/{id}.json",
+      "operations": [
+        {
+          "summary": "Updates an existing professor",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "email",
+              "type": "string",
+              "description": "E-mail, should be a cmu email",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "first_name",
+              "type": "string",
+              "description": "First Name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "last_name",
+              "type": "string",
+              "description": "Last Name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "password",
+              "type": "string",
+              "description": "password",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Professors#update",
+          "method": "patch"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

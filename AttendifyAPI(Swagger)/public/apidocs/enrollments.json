@@ -1,0 +1,132 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://attendify.herokuapp.com",
+  "resourcePath": "enrollments",
+  "apis": [
+    {
+      "path": "/enrollments.json",
+      "operations": [
+        {
+          "summary": "Fetches all enrollments",
+          "notes": "This lists all the enrollments",
+          "nickname": "Enrollments#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/enrollments.json",
+      "operations": [
+        {
+          "summary": "Creates a new enrollment",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "course_id",
+              "type": "integer",
+              "description": "Course ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "andrew_id",
+              "type": "string",
+              "description": "Andrew ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "active",
+              "type": "boolean",
+              "description": "Active",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Enrollments#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/enrollments/{id}.json",
+      "operations": [
+        {
+          "summary": "Shows one enrollment",
+          "notes": "This lists details of one enrollment",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "enrollment ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Enrollments#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/enrollments/{id}.json",
+      "operations": [
+        {
+          "summary": "Updates an existing enrollment",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "course_id",
+              "type": "integer",
+              "description": "Course ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "andrew_id",
+              "type": "string",
+              "description": "Andrew ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "active",
+              "type": "boolean",
+              "description": "Active",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Enrollments#update",
+          "method": "patch"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

@@ -90,6 +90,7 @@ In this section, we will take a deeper look at how each component works with one
 ### Overview
 <img src="faceIT/Images.xcassets/overview.png" width="90%">
 We created a Flask web service that has a registration form for students. They provide their Andrew ID (which acts as the primary key), their full name, a video of themselves, and the course ID number (as of last testing, we only added 67-442 and 67-272). The video they upload should show their face looking at the camera directly; moving their faces slowly and making different facial expressions. The background should be clear, and the lighting in the room should be adequate (video should not be done outside as this getse typically over-exposed). The length of the video should be at least 8 seconds, however we **highly** recommend to send longer videos. This is because, from each video, we splice it up into a set of images (4 images a frame), extract the faces detected in the image and feed it to our ResNet-50 model. Locally on the flask server, we have a db that houses the Andrew ID, and their photos. Both the videos and the first photo image are sent to AWS S3 buckets, to be read from the iOS application. After the model gets trained, Attendify will download the model automatically, and facial recognition can begin.
+
 ### Demo
 TODO: ADD demo videos here
 TODO: Add explanation

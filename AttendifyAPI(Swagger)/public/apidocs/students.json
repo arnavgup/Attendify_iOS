@@ -1,0 +1,162 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://attendify.herokuapp.com",
+  "resourcePath": "students",
+  "apis": [
+    {
+      "path": "/students.json",
+      "operations": [
+        {
+          "summary": "Fetches all students",
+          "notes": "This lists all the students",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "active",
+              "type": "boolean",
+              "description": "Filter on whether or not the student is active",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "alphabetical",
+              "type": "boolean",
+              "description": "Order students by alphabetical",
+              "required": false
+            }
+          ],
+          "nickname": "Students#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/students.json",
+      "operations": [
+        {
+          "summary": "Creates a new student",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "first_name",
+              "type": "string",
+              "description": "First name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "last_name",
+              "type": "string",
+              "description": "Last name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "andrew_id",
+              "type": "string",
+              "description": "Andrew ID, should be unique",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "active",
+              "type": "boolean",
+              "description": "Active",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Students#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/students/{id}.json",
+      "operations": [
+        {
+          "summary": "Shows one student",
+          "notes": "This lists details of one student",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "student ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Students#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/students/{id}.json",
+      "operations": [
+        {
+          "summary": "Updates an existing student",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "student Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "first_name",
+              "type": "string",
+              "description": "First name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "last_name",
+              "type": "string",
+              "description": "Last name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "password",
+              "type": "string",
+              "description": "Password",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Students#update",
+          "method": "patch"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

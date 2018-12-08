@@ -1,0 +1,134 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://attendify.herokuapp.com",
+  "resourcePath": "photos",
+  "apis": [
+    {
+      "path": "/photos.json",
+      "operations": [
+        {
+          "summary": "Fetches all photos",
+          "notes": "This lists all the photos",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "for_andrew_id",
+              "type": "string",
+              "description": "Gets the photos for the andrew ID",
+              "required": false
+            }
+          ],
+          "nickname": "Photos#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/photos.json",
+      "operations": [
+        {
+          "summary": "Creates a new photo",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "andrew_id",
+              "type": "string",
+              "description": "Andrew ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "photo_url",
+              "type": "string",
+              "description": "Photo URL",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Photos#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/photos/{id}.json",
+      "operations": [
+        {
+          "summary": "Shows one photo",
+          "notes": "This lists details of one photo",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "photo ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Photos#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/photos/{id}.json",
+      "operations": [
+        {
+          "summary": "Updates an existing photo",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "photo Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "andrew_id",
+              "type": "string",
+              "description": "Andrew ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "photo_url",
+              "type": "string",
+              "description": "Photo URL",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Photos#update",
+          "method": "patch"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

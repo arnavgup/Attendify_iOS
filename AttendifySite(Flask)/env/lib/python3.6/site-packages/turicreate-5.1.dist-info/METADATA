@@ -1,0 +1,71 @@
+Metadata-Version: 2.0
+Name: turicreate
+Version: 5.1
+Summary: Turi Create simplifies the development of custom machine learning models.
+Home-page: https://github.com/apple/turicreate
+Author: Apple Inc.
+Author-email: turi-create@group.apple.com
+License: LICENSE.txt
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Other Audience
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Operating System :: MacOS :: MacOS X
+Requires-Dist: coremltools (==2.0b1)
+Requires-Dist: decorator (>=4.0.9)
+Requires-Dist: mxnet (<1.2.0,>=1.1.0)
+Requires-Dist: numpy
+Requires-Dist: pandas (>=0.19.0)
+Requires-Dist: pillow (>=3.3.0)
+Requires-Dist: prettytable (==0.7.2)
+Requires-Dist: requests (>=2.9.1)
+
+Turi Create
+===========
+
+Turi Create simplifies the development of custom machine learning
+models. You don’t have to be a machine learning expert to add
+recommendations, object detection, image classification, image
+similarity or activity classification to your app.
+
+Supported Platforms
+-------------------
+Turi Create supports:
+
+-  macOS 10.12+
+-  Linux (with glibc 2.12+)
+-  Windows 10 (via WSL)
+
+System Requirements
+-------------------
+
+-  Python 2.7, 3.5, or 3.6
+-  x86_64 architecture
+
+Installation
+------------
+
+Please see detailed instructions at the project’s
+`homepage <https://github.com/apple/turicreate/blob/master/README.md#installation>`__.
+
+Documentation
+-------------
+
+The package `User
+Guide <https://apple.github.io/turicreate/docs/userguide>`__ and `API
+Docs <https://apple.github.io/turicreate/docs/api>`__ contain more
+details on how to use Turi Create.
+
+

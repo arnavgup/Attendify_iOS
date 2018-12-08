@@ -1,0 +1,169 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://attendify.herokuapp.com",
+  "resourcePath": "attendances",
+  "apis": [
+    {
+      "path": "/attendances.json",
+      "operations": [
+        {
+          "summary": "Fetches all attendances",
+          "notes": "This lists all the attendances",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "for_andrew_id",
+              "type": "string",
+              "description": "Gets the attendance for the andrew ID",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "for_class",
+              "type": "integer",
+              "description": "Gets the attendance for the class ID",
+              "required": false
+            }
+          ],
+          "nickname": "Attendances#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/attendances.json",
+      "operations": [
+        {
+          "summary": "Creates a new attendance",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "andrew_id",
+              "type": "string",
+              "description": "Andrew ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "date",
+              "type": "timestamp",
+              "description": "Date",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "course_id",
+              "type": "integer",
+              "description": "The ID of the class",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "attendance_type",
+              "type": "string",
+              "description": "The type can be Present, Absent, Excused",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Attendances#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/attendances/{id}.json",
+      "operations": [
+        {
+          "summary": "Shows one attendance",
+          "notes": "This lists details of one attendance",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "attendance ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Attendances#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/attendances/{id}.json",
+      "operations": [
+        {
+          "summary": "Updates an existing attendance",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "attendance Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "andrew_id",
+              "type": "string",
+              "description": "Andrew ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "date",
+              "type": "timestamp",
+              "description": "Date",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "course_id",
+              "type": "integer",
+              "description": "The ID of the class",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "attendance_type",
+              "type": "string",
+              "description": "The type can be Present, Absent, Excused",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Attendances#update",
+          "method": "patch"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

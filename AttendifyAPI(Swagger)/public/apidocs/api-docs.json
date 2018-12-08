@@ -1,0 +1,36 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://attendify.herokuapp.com",
+  "apis": [
+    {
+      "path": "/apidocs/students.{format}",
+      "description": "students Management"
+    },
+    {
+      "path": "/apidocs/professors.{format}",
+      "description": "Professor Management"
+    },
+    {
+      "path": "/apidocs/courses.{format}",
+      "description": "Course Management"
+    },
+    {
+      "path": "/apidocs/enrollments.{format}",
+      "description": "Enrollment Management"
+    },
+    {
+      "path": "/apidocs/photos.{format}",
+      "description": "photos Management"
+    },
+    {
+      "path": "/apidocs/attendances.{format}",
+      "description": "attendances Management"
+    }
+  ],
+  "authorizations": null,
+  "info": {
+    "title": "Attendify Backend API",
+    "description": "These are the end points for the Attendify project. The API would help save the records of students persistently and would make it possible to integrate with other systems like Canvas"
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "https://attendify.herokuapp.com",
+  "resourcePath": "courses",
+  "apis": [
+    {
+      "path": "/courses.json",
+      "operations": [
+        {
+          "summary": "Fetches all courses",
+          "notes": "This lists all the courses",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "active",
+              "type": "boolean",
+              "description": "Filter by active",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "getByYear",
+              "type": "string",
+              "description": "Filter by year",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "forProfessor",
+              "type": "integer",
+              "description": "Filter by professor",
+              "required": false
+            }
+          ],
+          "nickname": "Courses#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/courses.json",
+      "operations": [
+        {
+          "summary": "Creates a new course",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "professor_id",
+              "type": "integer",
+              "description": "Professor ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "class_number",
+              "type": "string",
+              "description": "Class Number, should be of format XX-XXX or XXXXX",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "semester_year",
+              "type": "string",
+              "description": "Semester Year, should be of format Spring|Fall|Summer XXXX",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "active",
+              "type": "boolean",
+              "description": "Active",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Courses#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/courses/{id}.json",
+      "operations": [
+        {
+          "summary": "Shows one course",
+          "notes": "This lists details of one course",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "course ID",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Courses#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/courses/{id}.json",
+      "operations": [
+        {
+          "summary": "Updates an existing course",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "professor_id",
+              "type": "integer",
+              "description": "Professor ID",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "class_number",
+              "type": "string",
+              "description": "Class Number, should be of format XX-XXX or XXXXX",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "semester_year",
+              "type": "string",
+              "description": "Semester Year, should be of format Spring|Fall|Summer XXXX",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "active",
+              "type": "boolean",
+              "description": "Active",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "nickname": "Courses#update",
+          "method": "patch"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

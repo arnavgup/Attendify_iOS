@@ -54,3 +54,24 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+AttendifyAPI(Swagger)/log/*
+AttendifyAPI(Swagger)/tmp/*
+.byebug_history
+
+# Elastic Beanstalk Files
+AttendifySite(Flask)/.elasticbeanstalk/*
+!AttendifySite(Flask)/.elasticbeanstalk/*.cfg.yml
+!AttendifySite(Flask)/.elasticbeanstalk/*.global.yml
+
+# Elastic Beanstalk Files
+AttendifySite(Flask)/app/.elasticbeanstalk/*
+!AttendifySite(Flask)/app/.elasticbeanstalk/*.cfg.yml
+!AttendifySite(Flask)/app/.elasticbeanstalk/*.global.yml
