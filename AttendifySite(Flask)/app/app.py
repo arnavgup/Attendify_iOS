@@ -22,7 +22,7 @@ import uuid
 import time
 import datetime
 
-bucket_name = "gyao.iosproject.faceimages"
+bucket_name = os.environ["IOSPROJECTBUCKET"]
 s3 = boto3.client('s3')
 latestModelTrained = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 
@@ -55,8 +55,8 @@ ma = Marshmallow(app)
 # Change from hard-code to ENV variables
 # in final demo
 app.config.update(dict(
-    SECRET_KEY="696b88c7-b650-4edb-a91f-78982d432ca1",
-    WTF_CSRF_SECRET_KEY="672d020a-9e67-4e12-b0fb-4fe6876ac30c'"
+    SECRET_KEY=os.environ["FLASKSECRETKEY"],
+    WTF_CSRF_SECRET_KEY=os.environ["FLASKCSRFKEY"]"
 ))
 
 

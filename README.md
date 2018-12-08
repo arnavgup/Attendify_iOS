@@ -91,16 +91,12 @@ In this section, we will take a deeper look at how each component works with one
 <img src="faceIT/Images.xcassets/overview.png" width="90%">
 We created a Flask web service that has a registration form for students. They provide their Andrew ID (which acts as the primary key), their full name, a video of themselves, and the course ID number (as of last testing, we only added 67-442 and 67-272). The video they upload should show their face looking at the camera directly; moving their faces slowly and making different facial expressions. The background should be clear, and the lighting in the room should be adequate (video should not be done outside as this getse typically over-exposed). The length of the video should be at least 8 seconds, however we **highly** recommend to send longer videos. This is because, from each video, we splice it up into a set of images (4 images a frame), extract the faces detected in the image and feed it to our ResNet-50 model. Locally on the flask server, we have a db that houses the Andrew ID, and their photos. Both the videos and the first photo image are sent to AWS S3 buckets, to be read from the iOS application. After the model gets trained, Attendify will download the model automatically, and facial recognition can begin.
 
-### Demo
-TODO: ADD demo videos here
-TODO: Add explanation
-
 
 ## Getting Started
 
 The following instructions will help you get set up with building the application locally on your computer. Ideally, this should be done on an OSX system, as the preferred IDE for IOS development is Xcode.
 
-**NOTE:** While you may be able to build the application successfully on your local machine, it will NOT run properly if the Flask Web-app (TODO: Add github link to Flask) OR the Ruby on Rails API Service (TODO: Add github link to Swagger) are not running alongside. This is because this iOS application relies on getting the latest .mlmodel file from the Flask web-site, and is currently set to upload data to the Ruby on Rails API service.
+**NOTE:** While you may be able to build the application successfully on your local machine, it will NOT run properly if the Flask Web-app OR the Ruby on Rails API Service are not running alongside. This is because this iOS application relies on getting the latest .mlmodel file from the Flask web-site, and is currently set to upload data to the Ruby on Rails API service.
 
 
 ### Prerequisites
@@ -108,11 +104,16 @@ The following instructions will help you get set up with building the applicatio
 * Xcode 9+
 * Swift 4+
 * iPhone 6s Device or above
+* Python 2.7+
 * Ruby 2+
   ```
   $ sudo brew install ruby
   ```
   **Note:** If you do not have Homebrew, follow instructions [here](https://brew.sh/)
+* Bundler
+  ```
+  $ sudo gem install bundler
+  ```
 * Cocoapods
   ```
   $ sudo gem install cocoapods
@@ -120,7 +121,65 @@ The following instructions will help you get set up with building the applicatio
   ```
 
 ### Setup and Installation
+#### Swagger API
+We create a Ruby on Rails API service that acts as our attendance data endpoint:
+```
+$ cd AttendifyAPI(Swagger)
+$ ls
+Gemfile       app           config        db            log    
+public        tmp           Gemfile.lock  Rakefile      bin   
+config.ru     lib           older_erd.png test          vendor
+$ cd app
+$ channels    controllers jobs        mailers     models      views
+```
 
+This Rails app should be hosted on an online platform, in order for the iOS application to successfully work. However, if you wish to run this locally:
+```
+$ bundle install
+$ rails s
+```
+
+#### Flask application
+The Flask web app houses the registration from, and trains a ResNet-50 model using data from the form. We created a docker image of the Flask web application to be easily portable onto any server:
+```
+$ cd AttendifySite(Flask)
+$ ls
+Attendify V11.zip Dockerfile        app               env
+```
+It is recommended to use the virtual environment we set up:
+```
+$ source env/bin/activate
+(env) $ pip freeze
+adal==1.2.0
+alabaster==0.7.10
+anaconda-client==1.6.9
+(env) $ deactivate
+$
+...
+```
+
+To make any future edits to the Flask application itself, go into app:
+```
+(env) $ cd app
+(env) $ ls
+app.py                 facerecognition.sqlite images                 models
+static                 templates              videos
+```
+* app.py - Handles controller and routes
+* facerecognition.sqlite - produced whenever ran; used for development purposes
+* images - Folder that contains extracted images (used by Turi Create)
+* models - Stores .mlmodels
+* static - Javascript and css files
+* templates - HTML files
+* videos - Holds uploaded videos (deleted after images are extracted to save space)
+
+In order for the iOS application to receive and send attendance data, this application needs to be hosted on a web service (ex. AWS Elastic Beanstalk, AWS Lambda Heroku etc.). However, if you want to attempt to run this locally:
+```
+(env) $ FLASK_APP=app.py FLASK_DEBUG=1 flask run
+```
+Any student registration done here will train a new .mlmodel, albeit locally only.
+
+#### iOS
 First, download the repository to your local machine
 ```
 git clone git@github.com:arnavgup/Attendify_iOS.git
