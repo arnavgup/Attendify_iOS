@@ -75,3 +75,7 @@ AttendifySite(Flask)/.elasticbeanstalk/*
 AttendifySite(Flask)/app/.elasticbeanstalk/*
 !AttendifySite(Flask)/app/.elasticbeanstalk/*.cfg.yml
 !AttendifySite(Flask)/app/.elasticbeanstalk/*.global.yml
+
+AttendifySite(Flask)/app/models/Faces_v1.mlmodel
+AttendifySite(Flask)/env/lib/python3.6/site-packages/numpy/.dylibs/libopenblasp-r0.3.0.dev.dylib
+AttendifySite(Flask)/env/lib/python3.6/site-packages/turicreate/libunity_shared.dylib
