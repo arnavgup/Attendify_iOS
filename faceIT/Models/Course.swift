@@ -218,12 +218,6 @@ class Course {
         
     }
   
-  // 6) This is an additional method that will be called in HomeViewController should call
-  //    to load up the past 7 days of attendance data
-  // TODO: Change this to school days later on, and consult with Arnav to make the scroll
-  // wheel to select only on certain days
-  
-  
   /**
    This is a similar function to the getStudents() function, however this will instead
    get the entire current week of student data (used by PastRecordsController)
