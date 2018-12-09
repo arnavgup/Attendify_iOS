@@ -54,7 +54,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-<<<<<<< HEAD
 # Ignore bundler config.
 /.bundle
 
@@ -81,5 +80,3 @@ AttendifySite(Flask)/app/models/Faces_v1.mlmodel
 AttendifySite(Flask)/env/lib/python3.6/site-packages/numpy/.dylibs/libopenblasp-r0.3.0.dev.dylib
 AttendifySite(Flask)/env/lib/python3.6/site-packages/turicreate/libunity_shared.dylib
 AttendifySite(Flask)/Attendify V11.zip
-=======
->>>>>>> a22a0d23b222a447f11f3174cc18476a67b9d226
